@@ -21,7 +21,7 @@ pip-log.txt
 *.mo
 
 # virtualenv
-ve
+venv
 
 # OSX finder
 .DS_Store
