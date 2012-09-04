@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="he-IL">
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description}{% endblock %}">
+    {% endblock %}
+</head>
+
+<body>
+    <div id="header">{% block header %}
+        <h1>דו&quot;חות המפקח הכללי</h1>
+    {% endblock %}</div>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">{% block footer %}
+        <h1>מאת הסדנא לידע ציבורי</h1>
+    {% endblock %}</div>
+</body>
+</html>
