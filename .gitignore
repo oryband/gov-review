@@ -2,7 +2,7 @@
 *.py[co]
 
 # virtualenv
-venv
+/venv
 
 # ctags
 /tags

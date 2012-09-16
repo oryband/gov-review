@@ -1,20 +1,57 @@
 <!DOCTYPE html>
-<html lang="he-IL">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="he-IL" class="no-js"> <!--<![endif]-->
 <head>
     {% block head %}
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %}</title>
-    <meta name="description" content="{% block description}{% endblock %}">
-    {% endblock %}
-</head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
 
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description%}{% endblock %}">
+
+    {% block css %}
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    {% endblock css %}
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    {% endblock head %}
+</head>
 <body>
-    <div id="header">{% block header %}
-        <h1>דו&quot;חות המפקח הכללי</h1>
-    {% endblock %}</div>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">{% block footer %}
-        <h1>מאת הסדנא לידע ציבורי</h1>
-    {% endblock %}</div>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--<p>Hello world! This is HTML5 Boilerplate.</p>-->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">דו&quot;חות המפקח הכללי</a>
+                <div class="nav-collapse collapse">
+                    <!--<p class="navbar-text pull-right">-->
+                    <!--Logged in as <a href="#" class="navbar-link">Username</a>-->
+                    <!--</p>-->
+                    <ul class="nav">
+                        <li class="active"><a href="#">ראשי</a></li>
+                        <li><a href="#about">הוסף</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="heading">
+        <img src="/static/img/trachtenberg-sign.jpg" alt="מעקב דו&quot;ח טרכטנברג">
+        <h1><a href="#">דו&quot;חות המפקח הכללי לענייני ביקורת המדינה</a></h1>
+    </div>
 </body>
 </html>
