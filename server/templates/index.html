@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="hero-unit">
+    <div class="row-fluid">
+        <div class="span2">
+            <img src="{{ url_for('static', filename='img/menorah.png') }}" alt="דו&quot;חות המפקח הכללי לענייני ביקורת המדינה">
+        </div>
+        <div class="span10">
+            <h1><a href="#">דו&quot;חות המפקח הכללי</a></h1>
+            <p>לענייני ביקורת המדינה</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div id="filters" class="row"> 
+        <div id="searchwidget" class="span4">
+            <h4>סינון:</h4>
+            <form id="searchbar" class="form-search" action="#">
+                <fieldset id="search">
+                    <input id="searchbox" class="input-xlarge search-query" name="xlInput" type="text" placeholder="משרד הבטחון" autocomplete="off">
+                </fieldset>
+            </form>
+        </div>
+
+        <div id="orderstats" class="span4" style="display: inherit; ">
+            <h4>סידור לפי:</h4>
+            <div id="sort" class="btn-group" data-toggle="buttons-radio">
+                <button class="btn btn-inverse" value="original">פרק</button>
+                <button class="btn btn-inverse" value="ministry">משרד</button>
+                <button class="btn btn-inverse" value="year">שנה</button>
+            </div>
+        </div>
+
+        <div id="stats" class="span4">
+            <h4 id="summary-header">סיכום התצוגה הנוכחית:</h4>
+            <div id="summary" class="summary">  <a class="total rel-tooltip" data-original-title="כלל ההמלצות בתצוגה זו">139 <span>סך הכל</span></a>
+                <a class="implemented rel-tooltip" data-original-title="מדד התפוקה יושם: הצעדים שהממשלה הייתה צריכה לעשות בוצעו. עם זאת, הישום אינו מבטיח השגה של מדד התוצאה">26 <span>יושמו</span></a>
+                <a class="in_progress rel-tooltip" data-original-title="ההמלצה נמצאת בטיפול. הסיבות לכך הן לרוב: חקיקה בכנסת, ועדות הדנות בנושא, או שההמלצה היא חלק מתוכנית חומש">40 <span>בתהליך</span></a>
+                <a class="stuck rel-tooltip" data-original-title="ההמלצה בטיפול, אבל יש גורמים חיצוניים שמעכבים אותה, או שלא התקבל עדכון מטעם הממשלה בחצי השנה האחרונה">49 <span>תקועות</span></a>
+                <a class="news rel-tooltip" data-original-title="ההמלצה לא אומצה כלל">22 <span>לא אומצו</span></a>
+                <a class="conflict rel-tooltip" data-original-title="קיימת אי הסכמה לגבי הסטטוס בין הגופים העוקבים והממשלה">2 <span><span>בקונ</span>פליקט</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
