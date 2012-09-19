@@ -1,8 +1,11 @@
-# Python
-*.py[co]
+# Redis db file.
+server/dump.rdb
 
 # virtualenv
 /venv
+
+# Python
+*.py[co]
 
 # ctags
 /tags
