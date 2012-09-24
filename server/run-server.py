@@ -3,7 +3,11 @@
 
 from flask import Flask, app, render_template, redirect, url_for, request
 #from wtforms import Form, TextField, TextArea
+import redis
 import os
+from ast import literal_eval
+from json import loads
+from pprint import pprint
 
 
 app.host = '0.0.0.0'
@@ -24,7 +28,13 @@ def init_db():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+
+    reports = r.hgetall('gov-review')
+    for k in reports.keys():  # Convert JSON to dict.
+        reports[k] = loads(reports[k])
+
+    return render_template('index.html', reports=reports.values())
 
 
 #@app.route('/fa')

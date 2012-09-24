@@ -3,12 +3,15 @@ body {
 }
 
 .hero-unit {
+    margin-bottom: 0px;
     border-radius: 0;
-    background-color: rgba(0,0,0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.filters {
-    padding: 10px;
+#filters {
+    margin-bottom: 20px;
+    padding: 10px 0 30px 0;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 h4 {
@@ -38,3 +41,141 @@ h4 {
     border-color: black;
 }
 
+.item {
+    width: 298px;
+    height: 864;
+    padding-left: 104px;
+    background: url("/static/img/card.png") right top no-repeat;
+    margin-bottom: 13px;
+}
+
+.item > div {
+    margin: 0 10px;
+}
+
+ul {
+    list-style: disc;
+}
+
+.tags li {
+    float: right;
+    text-decoration: none;
+    background: url("/static/img/taghead.png") no-repeat right top;
+    font-size: 0.7em;
+    height: 18px;
+    line-height: 18px;
+    list-style: none outside none;
+    margin: 0 0 3px 5px;
+    padding-right: 13px;
+    overflow: hidden;
+}
+
+.tags li a {
+    display: block;
+    background-color: #E4DAAC;
+    border-radius: 3px 0 0 3px;
+    padding: 0px 5px 1px;
+    color: #FFFCD9;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.tags li:hover {
+    background-position: right bottom;
+}
+
+.tags li:hover a {
+    background: #C4BB91;
+    color: #FFFCD9;
+}
+
+.tags li a:hover {
+    text-decoration: none;
+}
+
+.item div.stamp {
+    background: url("/static/img/stamp-accepted.png");
+    float: left;
+    height: 40px;
+    margin: -3px 0 -11px -18px;
+    overflow: hidden;
+    right: 240px;
+    text-indent: -200%;
+    width: 80px;
+}
+
+.item div.stamp-fixed {
+    background: url("/static/img/stamp-fixed.png");
+}
+.item div.stamp-in-progress {
+    background: url("/static/img/stamp-in-progress.png");
+}
+.item div.stamp-unfixed {
+    background: url("/static/img/stamp-unfixed.png");
+}
+
+.item h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+    clear: both;
+    margin: 1.3em 10px 0.5em;
+    line-height: 1em;
+    background: url("/static/img/hr.png");
+}
+
+.item .chapter-fixed {
+    background: #6BA688;
+}
+.item .chapter-in-progress {
+    background: #6BA688 url("/static/img/chapter-in-progress.png") 50% 50%;
+}
+.item .chapter-unfixed {
+    background: #F0776D;
+}
+.item h2 a {
+    color: #FFFCD9;
+    padding: 15px;
+    display: block;
+}
+
+.item h2:hover {
+    background: url("/static/img/hr.png");
+}
+
+.item h2 a:hover {
+    text-decoration: none
+}
+
+
+.item .entities {
+    color: #847D6B;
+    font-weight: normal;
+}
+
+.item h3 {
+    font-family: Arial,Sans;
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #847D6B;
+    padding: 0 5px;
+    line-height: 0.5em;
+}
+
+.item p, .item .entities p {
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+.item .entities p span {
+    color: #3C3C3C;
+}
+
+.item .description {
+    background: url("/static/img/hr.png") repeat-x center -2px;
+    padding-top: 0.5em;
+}
+
+.item .description p {
+    overflow: hidden;
+    height: 637px;
+}
