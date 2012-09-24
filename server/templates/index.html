@@ -2,20 +2,16 @@
 
 {% block header %}
 <div class="hero-unit">
-    <div class="row-fluid">
-        <div class="span2">
+    <div id="title" class="row-fluid">
+        <div class="span1">
             <img src="{{ url_for('static', filename='img/menorah.png') }}" alt="דו&quot;חות המפקח הכללי לענייני ביקורת המדינה">
         </div>
-        <div class="span10">
+        <div class="span11">
             <h1><a href="#">דו&quot;חות המפקח הכללי</a></h1>
             <p>לענייני ביקורת המדינה</p>
         </div>
     </div>
-</div>
-{% endblock %}
 
-{% block body %}
-<div class="container">
     <div id="filters" class="row"> 
         <div id="searchwidget" class="span4">
             <h4>סינון:</h4>
@@ -46,5 +42,10 @@
             </div>
         </div>
     </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
 </div>
 {% endblock %}

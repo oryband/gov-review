@@ -10,7 +10,7 @@ app.host = '0.0.0.0'
 DEBUG = True
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
-DB = '%s/db/data' % ROOT
+DB = '%s/db/dump.rdb' % ROOT
 
 app = Flask(__name__)
 app.config.from_object(__name__)
