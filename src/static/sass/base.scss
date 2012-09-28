@@ -1,10 +1,29 @@
+@import "compass/css3";
+
+@include font-face("PauzaFOT",
+                   font-files("/static/fonts/pauzafot-book-webfont.woff",
+                              "/static/fonts/pauzafot-book-webfont.ttf",
+                              "/static/fonts/pauzafot-book-webfont.svg"),
+                   eot("/static/fonts/pauzafot-book-webfont.eot"));
+ 
 body {
+    font-family: "PauzaFOT";
     background-color: #58606b;
+}
+
+a, a:hover,
+.hero-unit a, .hero-unit h1, .hero-unit h2, .hero-unit h3 {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #D9D9D9
 }
 
 .hero-unit {
     margin-bottom: 0px;
-    border-radius: 0;
+    @include border-radius(0);
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -73,7 +92,7 @@ ul {
 .tags li a {
     display: block;
     background-color: #E4DAAC;
-    border-radius: 3px 0 0 3px;
+    @include border-radius(3px 0 0 3px);
     padding: 0px 5px 1px;
     color: #FFFCD9;
     font-weight: 700;
