@@ -1,5 +1,8 @@
 # Redis db file.
-server/dump.rdb
+/server/dump.rdb
+
+# SASS
+/src/static/.sass-cache
 
 # virtualenv
 /venv
