@@ -1,31 +1,32 @@
 @import "compass/css3";
 
 @include font-face("PauzaFOT",
-font-files("/static/fonts/pauzafot-book-webfont.woff",
-"/static/fonts/pauzafot-book-webfont.ttf",
-"/static/fonts/pauzafot-book-webfont.svg"),
-eot("/static/fonts/pauzafot-book-webfont.eot"));
+                   font-files("/static/fonts/pauzafot-book-webfont.woff",
+                              "/static/fonts/pauzafot-book-webfont.ttf",
+                              "/static/fonts/pauzafot-book-webfont.svg"),
+                   eot("/static/fonts/pauzafot-book-webfont.eot"));
 
 body {
   font-family: "PauzaFOT";
   background-color: #58606b;
 }
 
-.hero-unit a, .hero-unit h1, .hero-unit h2, .hero-unit h3 {
-  a, a:hover {
-    color: white;
-    text-decoration: none;
+a, li {
+  &:hover {
+    text-decoration: none
   }
-}
-
-a:hover {
-  color: #D9D9D9
 }
 
 .hero-unit {
   margin-bottom: 0px;
-  @include border-radius(0);
   background-color: rgba(0, 0, 0, 0.4);
+  @include border-radius(0);
+  a, h1, h2, h3 {
+    color: white;
+  }
+  a:hover {
+    color: #d9d9d9
+  }
 }
 
 #filters {
@@ -48,154 +49,139 @@ h4 {
   font-size: 20px !important;
 }
 
-#sort > .btn {
-  color: white;
-  background-color: rgb(48, 52, 59);
-}
-
-#sort > .btn:hover {
-  background-color: rgb(34, 37, 42);
-}
-
-#sort > .btn:active {
-  border-color: black;
+#sort {
+  > .btn {
+    color: white;
+    background-color: rgb(48, 52, 59);
+    &:hover {
+      background-color: rgb(34, 37, 42);
+    }
+    &:active {
+      border-color: black;
+    }
+  }
 }
 
 .item {
-  width: 298px;
-  height: 864;
-  padding-left: 104px;
-  background: url("/static/img/card.png") right top no-repeat;
   margin-bottom: 13px;
+  padding-left: 104px;
+  width: 298px;
+  height: 864px;
+  background: url("/static/img/card.png") right top no-repeat;
+  div {
+    margin: 0 10px;
+  }
 }
 
-.item > div {
-  margin: 0 10px;
+.tags {
+  ul {
+    margin: 0 0 10px 0;
+    list-style: disc;
+    li {
+      float: right;
+      margin: 0 0 3px 5px;
+      padding-right: 13px;
+      height: 18px;
+      line-height: 18px;
+      overflow: hidden;
+      font-size: 0.7em;
+      background: url("/static/img/taghead.png") no-repeat right top;
+      list-style: none outside none;
+      a {
+        display: block;
+        padding: 0px 5px 1px;
+        font-weight: 700px;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+        @include border-radius(3px 0 0 3px);
+        color: #fffcd9;
+        background-color: #e4daac;
+      }
+    }
+    li:hover {
+      background-position: right bottom;
+      a {
+        background-color: #c4bb91;
+      }
+    }
+  }
 }
 
-ul {
-  list-style: disc;
-}
-
-.tags li {
-  float: right;
-  text-decoration: none;
-  background: url("/static/img/taghead.png") no-repeat right top;
-  font-size: 0.7em;
-  height: 18px;
-  line-height: 18px;
-  list-style: none outside none;
-  margin: 0 0 3px 5px;
-  padding-right: 13px;
-  overflow: hidden;
-}
-
-.tags li a {
-  display: block;
-  background-color: #E4DAAC;
-  @include border-radius(3px 0 0 3px);
-  padding: 0px 5px 1px;
-  color: #FFFCD9;
-  font-weight: 700;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-}
-
-.tags li:hover {
-  background-position: right bottom;
-}
-
-.tags li:hover a {
-  background: #C4BB91;
-  color: #FFFCD9;
-}
-
-.tags li a:hover {
-  text-decoration: none;
-}
-
-.item div.stamp {
-  background: url("/static/img/stamp-accepted.png");
-  float: left;
-  height: 40px;
-  margin: -3px 0 -11px -18px;
-  overflow: hidden;
-  right: 240px;
-  text-indent: -200%;
-  width: 80px;
-}
-
-.item div.stamp-fixed {
-  background: url("/static/img/stamp-fixed.png");
-}
-.item div.stamp-in-progress {
-  background: url("/static/img/stamp-in-progress.png");
-}
-.item div.stamp-unfixed {
-  background: url("/static/img/stamp-unfixed.png");
-}
-
-.item h2 {
-  font-weight: 400;
-  font-size: 1.5em;
-  clear: both;
-  margin: 1.3em 10px 0.5em;
-  line-height: 1em;
-  background: url("/static/img/hr.png");
-}
-
-.item .chapter-fixed {
-  background: #6BA688;
-}
-.item .chapter-in-progress {
-  background: #6BA688 url("/static/img/chapter-in-progress.png") 50% 50%;
-}
-.item .chapter-unfixed {
-  background: #F0776D;
-}
-.item h2 a {
-  color: #FFFCD9;
-  padding: 15px;
-  display: block;
-}
-
-.item h2:hover {
-  background: url("/static/img/hr.png");
-}
-
-.item h2 a:hover {
-  text-decoration: none
-}
-
-
-.item .entities {
-  color: #847D6B;
-  font-weight: normal;
-}
-
-.item h3 {
-  font-family: Arial,Sans;
-  font-size: 0.9em;
-  font-weight: normal;
-  color: #847D6B;
-  padding: 0 5px;
-  line-height: 0.5em;
-}
-
-.item p, .item .entities p {
-  padding: 5px;
-  font-size: 1.2em;
-}
-
-.item .entities p span {
-  color: #3C3C3C;
-}
-
-.item .description {
-  background: url("/static/img/hr.png") repeat-x center -2px;
-  padding-top: 0.5em;
-}
-
-.item .description p {
-  overflow: hidden;
-  height: 637px;
+.item {
+  div {
+    .stamp {
+      float: left;
+      margin: -3px 0 -11px -18px;
+      right: 240px;
+      height: 40px;
+      width: 80px;
+      overflow: hidden;
+      text-indent: -200%;
+      background: url("/static/img/stamp-accepted.png");
+    }
+    .stamp-fixed {
+      background: url("/static/img/stamp-fixed.png");
+    }
+    .stamp-in-progress {
+      background: url("/static/img/stamp-in-progress.png");
+    }
+    .stamp-unfixed {
+      background: url("/static/img/stamp-unfixed.png");
+    }
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+    clear: both;
+    margin: 1.3em 10px 0.5em;
+    line-height: 1em;
+    background: url("/static/img/hr.png");
+    &:hover {
+      background: url("/static/img/hr.png");
+    }
+    a {
+      display: block;
+      padding: 15px;
+      color: #FFFCD9;
+    }
+  }
+  h3 {
+    font-family: Arial,Sans;
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #847D6B;
+    padding: 0 5px;
+    line-height: 0.5em;
+  }
+  .chapter-fixed {
+    background: #6BA688;
+  }
+  .chapter-in-progress {
+    background: #6BA688 url("/static/img/chapter-in-progress.png") 50% 50%;
+  }
+  .chapter-unfixed {
+    background: #F0776D;
+  }
+  .entities {
+    color: #847D6B;
+    font-weight: normal;
+    p {
+      padding: 5px;
+      font-size: 1.2em;
+      span {
+        color: #3C3C3C;
+      }
+    }
+  }
+  p {
+    padding: 5px;
+    font-size: 1.2em;
+  }
+  .description {
+    background: url("/static/img/hr.png") repeat-x center -2px;
+    padding-top: 0.5em;
+    p {
+      overflow: hidden;
+      height: 637px;
+    }
+  }
 }
