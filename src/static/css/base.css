@@ -1,0 +1,245 @@
+@font-face {
+  font-family: "PauzaFOT";
+  src: url('../../server/fonts/eot("/static/fonts/pauzafot-book-webfont.eot")');
+  src: url('../../server/fonts/eot("/static/fonts/pauzafot-book-webfont.eot")?#iefix') format('eot'), url(/static/fonts/pauzafot-book-webfont.woff) format('woff'), url(/static/fonts/pauzafot-book-webfont.ttf) format('truetype'), url(/static/fonts/pauzafot-book-webfont.svg) format('svg');
+}
+
+/* line 9, ../sass/base.scss */
+body {
+  font-family: "PauzaFOT";
+  background-color: #58606b;
+}
+
+/* line 15, ../sass/base.scss */
+.hero-unit a a, .hero-unit a a:hover, .hero-unit h1 a, .hero-unit h1 a:hover, .hero-unit h2 a, .hero-unit h2 a:hover, .hero-unit h3 a, .hero-unit h3 a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 21, ../sass/base.scss */
+a:hover {
+  color: #d9d9d9;
+}
+
+/* line 25, ../sass/base.scss */
+.hero-unit {
+  margin-bottom: 0px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* line 31, ../sass/base.scss */
+#filters {
+  margin-bottom: 20px;
+  padding: 10px 0 30px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* line 37, ../sass/base.scss */
+h4 {
+  color: #808998;
+}
+
+/* line 41, ../sass/base.scss */
+#searchbox {
+  height: 30px;
+  font-size: 25px;
+}
+
+/* line 46, ../sass/base.scss */
+.btn, .btn-inverse {
+  padding: 10px;
+  font-size: 20px !important;
+}
+
+/* line 51, ../sass/base.scss */
+#sort > .btn {
+  color: white;
+  background-color: #30343b;
+}
+
+/* line 56, ../sass/base.scss */
+#sort > .btn:hover {
+  background-color: #22252a;
+}
+
+/* line 60, ../sass/base.scss */
+#sort > .btn:active {
+  border-color: black;
+}
+
+/* line 64, ../sass/base.scss */
+.item {
+  width: 298px;
+  height: 864;
+  padding-left: 104px;
+  background: url("/static/img/card.png") right top no-repeat;
+  margin-bottom: 13px;
+}
+
+/* line 72, ../sass/base.scss */
+.item > div {
+  margin: 0 10px;
+}
+
+/* line 76, ../sass/base.scss */
+ul {
+  list-style: disc;
+}
+
+/* line 80, ../sass/base.scss */
+.tags li {
+  float: right;
+  text-decoration: none;
+  background: url("/static/img/taghead.png") no-repeat right top;
+  font-size: 0.7em;
+  height: 18px;
+  line-height: 18px;
+  list-style: none outside none;
+  margin: 0 0 3px 5px;
+  padding-right: 13px;
+  overflow: hidden;
+}
+
+/* line 93, ../sass/base.scss */
+.tags li a {
+  display: block;
+  background-color: #E4DAAC;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  -ms-border-radius: 3px 0 0 3px;
+  -o-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+  padding: 0px 5px 1px;
+  color: #FFFCD9;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/* line 103, ../sass/base.scss */
+.tags li:hover {
+  background-position: right bottom;
+}
+
+/* line 107, ../sass/base.scss */
+.tags li:hover a {
+  background: #C4BB91;
+  color: #FFFCD9;
+}
+
+/* line 112, ../sass/base.scss */
+.tags li a:hover {
+  text-decoration: none;
+}
+
+/* line 116, ../sass/base.scss */
+.item div.stamp {
+  background: url("/static/img/stamp-accepted.png");
+  float: left;
+  height: 40px;
+  margin: -3px 0 -11px -18px;
+  overflow: hidden;
+  right: 240px;
+  text-indent: -200%;
+  width: 80px;
+}
+
+/* line 127, ../sass/base.scss */
+.item div.stamp-fixed {
+  background: url("/static/img/stamp-fixed.png");
+}
+
+/* line 130, ../sass/base.scss */
+.item div.stamp-in-progress {
+  background: url("/static/img/stamp-in-progress.png");
+}
+
+/* line 133, ../sass/base.scss */
+.item div.stamp-unfixed {
+  background: url("/static/img/stamp-unfixed.png");
+}
+
+/* line 137, ../sass/base.scss */
+.item h2 {
+  font-weight: 400;
+  font-size: 1.5em;
+  clear: both;
+  margin: 1.3em 10px 0.5em;
+  line-height: 1em;
+  background: url("/static/img/hr.png");
+}
+
+/* line 146, ../sass/base.scss */
+.item .chapter-fixed {
+  background: #6BA688;
+}
+
+/* line 149, ../sass/base.scss */
+.item .chapter-in-progress {
+  background: #6ba688 url("/static/img/chapter-in-progress.png") 50% 50%;
+}
+
+/* line 152, ../sass/base.scss */
+.item .chapter-unfixed {
+  background: #F0776D;
+}
+
+/* line 155, ../sass/base.scss */
+.item h2 a {
+  color: #FFFCD9;
+  padding: 15px;
+  display: block;
+}
+
+/* line 161, ../sass/base.scss */
+.item h2:hover {
+  background: url("/static/img/hr.png");
+}
+
+/* line 165, ../sass/base.scss */
+.item h2 a:hover {
+  text-decoration: none;
+}
+
+/* line 170, ../sass/base.scss */
+.item .entities {
+  color: #847D6B;
+  font-weight: normal;
+}
+
+/* line 175, ../sass/base.scss */
+.item h3 {
+  font-family: Arial,Sans;
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #847D6B;
+  padding: 0 5px;
+  line-height: 0.5em;
+}
+
+/* line 184, ../sass/base.scss */
+.item p, .item .entities p {
+  padding: 5px;
+  font-size: 1.2em;
+}
+
+/* line 189, ../sass/base.scss */
+.item .entities p span {
+  color: #3C3C3C;
+}
+
+/* line 193, ../sass/base.scss */
+.item .description {
+  background: url("/static/img/hr.png") repeat-x center -2px;
+  padding-top: 0.5em;
+}
+
+/* line 198, ../sass/base.scss */
+.item .description p {
+  overflow: hidden;
+  height: 637px;
+}

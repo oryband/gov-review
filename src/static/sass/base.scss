@@ -11,10 +11,11 @@ body {
     background-color: #58606b;
 }
 
-a, a:hover,
 .hero-unit a, .hero-unit h1, .hero-unit h2, .hero-unit h3 {
+  a, a:hover {
     color: white;
     text-decoration: none;
+  }
 }
 
 a:hover {
