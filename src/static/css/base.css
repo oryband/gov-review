@@ -1,23 +1,39 @@
 @font-face {
   font-family: "PauzaFOT";
-  src: url('../../server/fonts/eot("/static/fonts/pauzafot-book-webfont.eot")');
-  src: url('../../server/fonts/eot("/static/fonts/pauzafot-book-webfont.eot")?#iefix') format('eot'), url(/static/fonts/pauzafot-book-webfont.woff) format('woff'), url(/static/fonts/pauzafot-book-webfont.ttf) format('truetype'), url(/static/fonts/pauzafot-book-webfont.svg) format('svg');
+  src: url(/static/fonts/pauzafot-book-webfont.eot);
+  src: url(/static/fonts/pauzafot-book-webfont.eot?#iefix) format('eot'), url(/static/fonts/pauzafot-book-webfont.woff) format('woff'), url(/static/fonts/pauzafot-book-webfont.ttf) format('truetype'), url(/static/fonts/pauzafot-book-webfont.svg) format('svg');
 }
 
-/* line 9, ../sass/base.scss */
+/* line 5, ../sass/base.scss */
 body {
-  font-family: "PauzaFOT";
+  font-family: "PauzaFOT", Arial, sans-serif;
   background-color: #58606b;
 }
 
-/* line 15, ../sass/base.scss */
+/* line 10, ../sass/base.scss */
+a, li {
+  color: white;
+}
+/* line 12, ../sass/base.scss */
 a:hover, li:hover {
-  text-decoration: none;
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+  color: #d9d9d9;
+}
+/* line 6, ../../../../../../../usr/local/Cellar/ruby/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_unstyled-link.scss */
+a:hover:active, a:hover:focus, li:hover:active, li:hover:focus {
+  outline: none;
 }
 
-/* line 20, ../sass/base.scss */
+/* line 18, ../sass/base.scss */
+h4 {
+  color: #808998;
+}
+
+/* line 22, ../sass/base.scss */
 .hero-unit {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -25,108 +41,80 @@ a:hover, li:hover {
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 24, ../sass/base.scss */
-.hero-unit a, .hero-unit h1, .hero-unit h2, .hero-unit h3 {
-  color: white;
-}
-/* line 27, ../sass/base.scss */
-.hero-unit a:hover {
-  color: #d9d9d9;
-}
 
-/* line 32, ../sass/base.scss */
+/* line 28, ../sass/base.scss */
 #filters {
   margin-bottom: 20px;
-  padding: 10px 0 30px 0;
+  padding: 10px 40px 10px 0;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* line 38, ../sass/base.scss */
-h4 {
-  color: #808998;
-}
-
-/* line 42, ../sass/base.scss */
+/* line 34, ../sass/base.scss */
 #searchbox {
   height: 30px;
   font-size: 25px;
 }
 
-/* line 47, ../sass/base.scss */
-.btn, .btn-inverse {
+/* line 40, ../sass/base.scss */
+#sort > .btn, #sort > .btn-inverse {
   padding: 10px;
   font-size: 20px !important;
-}
-
-/* line 53, ../sass/base.scss */
-#sort > .btn {
   color: white;
-  background-color: #30343b;
+  background-color: #485259;
 }
-/* line 56, ../sass/base.scss */
-#sort > .btn:hover {
-  background-color: #22252a;
+/* line 45, ../sass/base.scss */
+#sort > .btn:hover, #sort > .btn-inverse:hover {
+  background-color: #343742;
 }
-/* line 59, ../sass/base.scss */
-#sort > .btn:active {
+/* line 48, ../sass/base.scss */
+#sort > .btn:active, #sort > .btn-inverse:active {
   border-color: black;
 }
 
-/* line 65, ../sass/base.scss */
+/* line 54, ../sass/base.scss */
 .item {
   margin-bottom: 13px;
   padding-left: 104px;
+  /*width: image-width("card.png");*/
   width: 298px;
   height: 864px;
-  background: url("/static/img/card.png") right top no-repeat;
+  background: url('/static/img/card.png?1348509793') right top no-repeat;
+}
+/* line 61, ../sass/base.scss */
+.item h2 {
+  clear: both;
+  margin: 1.3em 10px 0.5em;
+  line-height: 1em;
+  font-weight: 400;
+  font-size: 1.5em;
+  background-image: url('/static/img/hr.png?1346689280');
+}
+/* line 68, ../sass/base.scss */
+.item h2:hover {
+  background-image: url('/static/img/hr.png?1346689280');
 }
 /* line 71, ../sass/base.scss */
+.item h2 a {
+  display: block;
+  padding: 15px;
+  color: #fffcd9;
+}
+/* line 77, ../sass/base.scss */
+.item h3 {
+  font-family: "PauzaFOT", Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #847d6b;
+  padding: 0 5px;
+  line-height: 0.5em;
+}
+/* line 85, ../sass/base.scss */
 .item div {
   margin: 0 10px;
 }
-
-/* line 77, ../sass/base.scss */
-.tags ul {
-  margin: 0 0 10px 0;
-  list-style: disc;
-}
-/* line 80, ../sass/base.scss */
-.tags ul li {
-  float: right;
-  margin: 0 0 3px 5px;
-  padding-right: 13px;
-  height: 18px;
-  line-height: 18px;
-  overflow: hidden;
-  font-size: 0.7em;
-  background: url("/static/img/taghead.png") no-repeat right top;
-  list-style: none outside none;
-}
-/* line 90, ../sass/base.scss */
-.tags ul li a {
-  display: block;
-  padding: 0px 5px 1px;
-  font-weight: 700px;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-  -webkit-border-radius: 3px 0 0 3px;
-  -moz-border-radius: 3px 0 0 3px;
-  -ms-border-radius: 3px 0 0 3px;
-  -o-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
-  color: #fffcd9;
-  background-color: #e4daac;
-}
-/* line 100, ../sass/base.scss */
-.tags ul li:hover {
-  background-position: right bottom;
-}
-/* line 102, ../sass/base.scss */
-.tags ul li:hover a {
-  background-color: #c4bb91;
-}
-
-/* line 111, ../sass/base.scss */
-.item div .stamp {
+/* line 88, ../sass/base.scss */
+.item .stamp {
+  display: inline;
   float: left;
   margin: -3px 0 -11px -18px;
   right: 240px;
@@ -134,86 +122,102 @@ h4 {
   width: 80px;
   overflow: hidden;
   text-indent: -200%;
-  background: url("/static/img/stamp-accepted.png");
+  background-image: url('/static/img/stamp-accepted.png?1346689280');
+}
+/* line 98, ../sass/base.scss */
+.item .stamp-fixed {
+  background-image: url('/static/img/stamp-fixed.png?1348517025');
+}
+/* line 101, ../sass/base.scss */
+.item .stamp-in-progress {
+  background-image: url('/static/img/stamp-in-progress.png?1348517025');
+}
+/* line 104, ../sass/base.scss */
+.item .stamp-unfixed {
+  background-image: url('/static/img/stamp-unfixed.png?1348517025');
+}
+/* line 107, ../sass/base.scss */
+.item .chapter-fixed {
+  background-color: #6ba688;
+  background-image: none;
+}
+/* line 111, ../sass/base.scss */
+.item .chapter-in-progress {
+  background: #6ba688 url('/static/img/chapter-in-progress.png?1346689280') 50% 50%;
+}
+/* line 114, ../sass/base.scss */
+.item .chapter-unfixed {
+  background-color: #f0776d;
+  background-image: none;
+}
+/* line 118, ../sass/base.scss */
+.item .entities {
+  color: #847d6b;
+  font-weight: normal;
 }
 /* line 121, ../sass/base.scss */
-.item div .stamp-fixed {
-  background: url("/static/img/stamp-fixed.png");
-}
-/* line 124, ../sass/base.scss */
-.item div .stamp-in-progress {
-  background: url("/static/img/stamp-in-progress.png");
-}
-/* line 127, ../sass/base.scss */
-.item div .stamp-unfixed {
-  background: url("/static/img/stamp-unfixed.png");
-}
-/* line 131, ../sass/base.scss */
-.item h2 {
-  font-weight: 400;
-  font-size: 1.5em;
-  clear: both;
-  margin: 1.3em 10px 0.5em;
-  line-height: 1em;
-  background: url("/static/img/hr.png");
-}
-/* line 138, ../sass/base.scss */
-.item h2:hover {
-  background: url("/static/img/hr.png");
-}
-/* line 141, ../sass/base.scss */
-.item h2 a {
-  display: block;
-  padding: 15px;
-  color: #FFFCD9;
-}
-/* line 147, ../sass/base.scss */
-.item h3 {
-  font-family: Arial,Sans;
-  font-size: 0.9em;
-  font-weight: normal;
-  color: #847D6B;
-  padding: 0 5px;
-  line-height: 0.5em;
-}
-/* line 155, ../sass/base.scss */
-.item .chapter-fixed {
-  background: #6BA688;
-}
-/* line 158, ../sass/base.scss */
-.item .chapter-in-progress {
-  background: #6ba688 url("/static/img/chapter-in-progress.png") 50% 50%;
-}
-/* line 161, ../sass/base.scss */
-.item .chapter-unfixed {
-  background: #F0776D;
-}
-/* line 164, ../sass/base.scss */
-.item .entities {
-  color: #847D6B;
-  font-weight: normal;
-}
-/* line 167, ../sass/base.scss */
 .item .entities p {
   padding: 5px;
   font-size: 1.2em;
 }
-/* line 170, ../sass/base.scss */
+/* line 124, ../sass/base.scss */
 .item .entities p span {
-  color: #3C3C3C;
+  color: #3c3c3c;
 }
-/* line 175, ../sass/base.scss */
+/* line 129, ../sass/base.scss */
 .item p {
   padding: 5px;
   font-size: 1.2em;
 }
-/* line 179, ../sass/base.scss */
+/* line 133, ../sass/base.scss */
 .item .description {
-  background: url("/static/img/hr.png") repeat-x center -2px;
+  background: url('/static/img/hr.png?1346689280') repeat-x center -2px;
   padding-top: 0.5em;
 }
-/* line 182, ../sass/base.scss */
+/* line 136, ../sass/base.scss */
 .item .description p {
   overflow: hidden;
-  height: 637px;
+  height: 614px;
+  /*height: 637px;*/
+}
+
+/* line 145, ../sass/base.scss */
+.tags ul {
+  margin: 0 0 10px 0;
+  list-style: disc;
+}
+/* line 148, ../sass/base.scss */
+.tags ul a {
+  display: inline;
+  float: right;
+  margin: 0 0 3px 5px;
+  padding-right: 13px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 0.7em;
+  overflow: hidden;
+  list-style: none outside none;
+  background: url('/static/img/taghead.png?1348516583') no-repeat right top;
+}
+/* line 158, ../sass/base.scss */
+.tags ul a li {
+  display: block;
+  padding: 0px 5px 1px;
+  font-weight: 700px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  color: #fffcd9;
+  background-color: #e4daac;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  -ms-border-radius: 3px 0 0 3px;
+  -o-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 167, ../sass/base.scss */
+.tags ul a:hover {
+  background-position: right bottom;
+}
+/* line 169, ../sass/base.scss */
+.tags ul a:hover li {
+  background-color: #c4bb91;
 }

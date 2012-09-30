@@ -1,0 +1,9 @@
+@import "compass/css3";
+
+@include font-face("PauzaFOT",
+                   font-files(font-url("pauzafot-book-webfont.woff", true),
+                              font-url("pauzafot-book-webfont.ttf", true),
+                              font-url("pauzafot-book-webfont.svg", true)),
+                   font-url("pauzafot-book-webfont.eot", true));
+
+$ff: "PauzaFOT", Arial, sans-serif;
