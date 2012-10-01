@@ -1,0 +1,189 @@
+/* line 4, ../sass/index.scss */
+.hero-unit {
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+/* line 10, ../sass/index.scss */
+#filters {
+  margin-bottom: 20px;
+  padding: 10px 40px 10px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* line 16, ../sass/index.scss */
+#searchbox {
+  height: 30px;
+  font-size: 25px;
+}
+
+/* line 22, ../sass/index.scss */
+#sort > .btn, #sort > .btn-inverse {
+  padding: 10px;
+  font-size: 20px !important;
+  color: white;
+  background-color: #485259;
+}
+/* line 27, ../sass/index.scss */
+#sort > .btn:hover, #sort > .btn-inverse:hover {
+  background-color: #343742;
+}
+/* line 30, ../sass/index.scss */
+#sort > .btn:active, #sort > .btn-inverse:active {
+  border-color: black;
+}
+
+/* line 36, ../sass/index.scss */
+.item {
+  margin-bottom: 13px;
+  padding-left: 104px;
+  /*width: image-width("card.png");*/
+  width: 298px;
+  height: 864px;
+  background: url('/static/img/card.png?1348509793') right top no-repeat;
+}
+/* line 43, ../sass/index.scss */
+.item h2 {
+  clear: both;
+  margin: 1.3em 10px 0.5em;
+  line-height: 1em;
+  font-weight: 400;
+  font-size: 1.5em;
+  background-image: url('/static/img/hr.png?1346689280');
+}
+/* line 50, ../sass/index.scss */
+.item h2:hover {
+  background-image: url('/static/img/hr.png?1346689280');
+}
+/* line 53, ../sass/index.scss */
+.item h2 a {
+  display: block;
+  padding: 15px;
+  color: #fffcd9;
+}
+/* line 59, ../sass/index.scss */
+.item h3 {
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #847d6b;
+  padding: 0 5px;
+  line-height: 0.5em;
+}
+/* line 66, ../sass/index.scss */
+.item div {
+  margin: 0 10px;
+}
+/* line 69, ../sass/index.scss */
+.item .stamp {
+  display: inline;
+  float: left;
+  margin: -3px 0 -11px -18px;
+  right: 240px;
+  height: 40px;
+  width: 80px;
+  overflow: hidden;
+  text-indent: -200%;
+  background-image: url('/static/img/stamp-accepted.png?1346689280');
+}
+/* line 79, ../sass/index.scss */
+.item .stamp-fixed {
+  background-image: url('/static/img/stamp-fixed.png?1348517025');
+}
+/* line 82, ../sass/index.scss */
+.item .stamp-in-progress {
+  background-image: url('/static/img/stamp-in-progress.png?1348517025');
+}
+/* line 85, ../sass/index.scss */
+.item .stamp-unfixed {
+  background-image: url('/static/img/stamp-unfixed.png?1348517025');
+}
+/* line 88, ../sass/index.scss */
+.item .chapter-fixed {
+  background-color: #6ba688;
+  background-image: none;
+}
+/* line 92, ../sass/index.scss */
+.item .chapter-in-progress {
+  background: #6ba688 url('/static/img/chapter-in-progress.png?1346689280') 50% 50%;
+}
+/* line 95, ../sass/index.scss */
+.item .chapter-unfixed {
+  background-color: #f0776d;
+  background-image: none;
+}
+/* line 99, ../sass/index.scss */
+.item .entities {
+  color: #847d6b;
+  font-weight: normal;
+}
+/* line 102, ../sass/index.scss */
+.item .entities p {
+  padding: 5px;
+  font-size: 1.2em;
+}
+/* line 105, ../sass/index.scss */
+.item .entities p span {
+  color: #3c3c3c;
+}
+/* line 110, ../sass/index.scss */
+.item p {
+  padding: 5px;
+  font-size: 1.2em;
+}
+/* line 114, ../sass/index.scss */
+.item .description {
+  background: url('/static/img/hr.png?1346689280') repeat-x center -2px;
+  padding-top: 0.5em;
+}
+/* line 117, ../sass/index.scss */
+.item .description p {
+  overflow: hidden;
+  height: 614px;
+  /*height: 637px;*/
+}
+
+/* line 126, ../sass/index.scss */
+.tags ul {
+  margin: 0 0 10px 0;
+  list-style: disc;
+}
+/* line 129, ../sass/index.scss */
+.tags ul a {
+  display: inline;
+  float: right;
+  margin: 0 0 3px 5px;
+  padding-right: 13px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 0.7em;
+  overflow: hidden;
+  list-style: none outside none;
+  background: url('/static/img/taghead.png?1348516583') no-repeat right top;
+}
+/* line 139, ../sass/index.scss */
+.tags ul a li {
+  display: block;
+  padding: 0px 5px 1px;
+  font-weight: 700px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  color: #fffcd9;
+  background-color: #e4daac;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  -ms-border-radius: 3px 0 0 3px;
+  -o-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 148, ../sass/index.scss */
+.tags ul a:hover {
+  background-position: right bottom;
+}
+/* line 150, ../sass/index.scss */
+.tags ul a:hover li {
+  background-color: #c4bb91;
+}

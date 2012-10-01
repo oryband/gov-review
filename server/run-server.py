@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-from flask import Flask, app, render_template, redirect, url_for, request
+from flask import Flask, app, render_template
 #from wtforms import Form, TextField, TextArea
 import redis
 import os
-from ast import literal_eval
 from json import loads
-from pprint import pprint
 
 
 app.host = '0.0.0.0'
@@ -18,12 +16,6 @@ DB = '%s/db/dump.rdb' % ROOT
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-
-
-def init_db():
-    """Load reports from db file."""
-    # TODO
-    pass
 
 
 @app.route('/')
@@ -37,8 +29,9 @@ def index():
     return render_template('index.html', reports=reports.values())
 
 
-#@app.route('/fa')
-#return Response(file('static/html/index.html').read())
+@app.route('/add/')
+def add(report):
+    return render_template('add.html')
 
 
 #class Report(Form):
