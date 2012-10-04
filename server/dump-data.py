@@ -5,8 +5,7 @@ s = __import__("run-server")  # Because of dash `-` in file name.
 
 import redis
 
-from json import loads
-from pprint import pprint
+from json import loads, dumps
 
 if __name__ == '__main__':
     r = redis.StrictRedis(host=s.DB_HOST, port=s.DB_PORT, db=0)
@@ -15,4 +14,6 @@ if __name__ == '__main__':
     for k in reports.keys():  # Convert JSON to dict.
         reports[k] = loads(reports[k])
 
-    pprint(reports)
+    f = open('data.json', 'wb')
+    f.write(dumps(reports))
+    f.close()
