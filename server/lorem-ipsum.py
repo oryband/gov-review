@@ -11,6 +11,9 @@ from datetime import date
 from re import sub
 
 if __name__ == '__main__':
+    #r = redis.StrictRedis(host=s.DB_HOST, port=s.DB_PORT, db=0)
+    #r.flushall()  # Clear db.
+
     f = open('lorem.txt', 'rb')
     lorem = f.read()
     f.close()
@@ -25,10 +28,7 @@ if __name__ == '__main__':
         [choice(lorem_split) for words in range(randrange(10))]
     ) for x in range(10)]
 
-    r = redis.StrictRedis(host=s.DB_HOST, port=s.DB_PORT, db=0)
-    r.flushall()  # Clear db.
-
-    # Populate db with initial lorem-ipsum data.
+    # Populate db/file with initial lorem-ipsum data.
     chapters = []
     for chapter in range(1, 6):
         sub_chapters = []
@@ -36,15 +36,19 @@ if __name__ == '__main__':
             cur_entities = sorted(set(
                 [choice(entities) for x in range(randrange(1, 6))]
             ))
-            defects = {
-                'tags': sorted(set(
-                    [choice(tags) for x in range(randrange(1, 11))]
-                )),
-                'url': 'http://google.com',
-                'description': lorem,
-                'status': choice(('fixed', 'in-progress', 'unfixed')),
-                'follow-up': dict.fromkeys(cur_entities, lorem),
-            }
+
+            defects = []
+            for defect in range(3):
+                defects.append({
+                    'tags': sorted(set(
+                        [choice(tags) for x in range(randrange(1, 11))]
+                    )),
+                    'url': 'http://google.com',
+                    'description': lorem,
+                    'status': choice(('fixed', 'in-progress', 'unfixed')),
+                    'follow-up': dict.fromkeys(cur_entities, lorem),
+                })
+
             sub_chapters.append({
                 'name': '%s-%s' % (sub_chapter, choice(lorem_split)),
                 'entities': cur_entities,
@@ -68,7 +72,11 @@ if __name__ == '__main__':
                         'description': lorem
                     }
 
-    r.hset(s.DB_KEY, 'chapters', dumps(chapters))
-    r.hset(s.DB_KEY, 'resolutions', dumps(resolutions))
+    #r.hset(s.DB_KEY, 'chapters', dumps(chapters))
+    #r.hset(s.DB_KEY, 'resolutions', dumps(resolutions))
+    #r.save()  # Save to db.
 
-    r.save()  # Save to db.
+    d = {'chapters': chapters, 'resolutions': resolutions}
+    f = open('data.json', 'wb')
+    f.write(dumps(d))
+    f.close()
