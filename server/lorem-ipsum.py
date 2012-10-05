@@ -57,7 +57,8 @@ if __name__ == '__main__':
             })
 
         chapters.append({
-            'name': 'chapter-%s' % chapter,
+            'name': ' '.join([choice(lorem_split)
+                              for word in range(randrange(1, 21))]),
             'sub-chapters': sub_chapters
         })
 
