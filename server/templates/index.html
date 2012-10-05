@@ -5,6 +5,8 @@
 <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
 {% endblock %}
 
+{% block main_class %}active{% endblock %}
+
 {% block header %}
 <div class="hero-unit">
   <div id="title" class="row-fluid">
@@ -17,33 +19,22 @@
   </div>
 </div>
 
-<div id="filters" class="row"> 
-  <div id="searchwidget" class="span4">
+<div id="filters" class="row page-header"> 
+  <div id="searchwidget" class="span8">
     <h4>סינון:</h4>
     <form id="searchbar" class="form-search" action="#">
       <fieldset id="search">
-        <input id="searchbox" class="input-xlarge search-query" name="xlInput" type="text" placeholder="משרד הבטחון" autocomplete="off">
+        <input id="searchbox" class="input-xxlarge search-query" name="xlInput" type="text" placeholder="לדוגמא: משרד הבטחון" autocomplete="off">
       </fieldset>
     </form>
   </div>
 
-  <div id="orderstats" class="span4" style="display: inherit; ">
+  <div id="orderstats" class="span4">
     <h4>סידור לפי:</h4>
     <div id="sort" class="btn-group" data-toggle="buttons-radio">
       <button class="btn btn-inverse" value="original">פרק</button>
       <button class="btn btn-inverse" value="ministry">משרד</button>
       <button class="btn btn-inverse" value="year">שנה</button>
-    </div>
-  </div>
-
-  <div id="stats" class="span4">
-    <h4 id="summary-header">סיכום התצוגה הנוכחית:</h4>
-    <div id="summary" class="summary">  <a class="total rel-tooltip" data-original-title="כלל ההמלצות בתצוגה זו">139 <span>סך הכל</span></a>
-      <a class="implemented rel-tooltip" data-original-title="מדד התפוקה יושם: הצעדים שהממשלה הייתה צריכה לעשות בוצעו. עם זאת, הישום אינו מבטיח השגה של מדד התוצאה">26 <span>יושמו</span></a>
-      <a class="in_progress rel-tooltip" data-original-title="ההמלצה נמצאת בטיפול. הסיבות לכך הן לרוב: חקיקה בכנסת, ועדות הדנות בנושא, או שההמלצה היא חלק מתוכנית חומש">40 <span>בתהליך</span></a>
-      <a class="stuck rel-tooltip" data-original-title="ההמלצה בטיפול, אבל יש גורמים חיצוניים שמעכבים אותה, או שלא התקבל עדכון מטעם הממשלה בחצי השנה האחרונה">49 <span>תקועות</span></a>
-      <a class="news rel-tooltip" data-original-title="ההמלצה לא אומצה כלל">22 <span>לא אומצו</span></a>
-      <a class="conflict rel-tooltip" data-original-title="קיימת אי הסכמה לגבי הסטטוס בין הגופים העוקבים והממשלה">2 <span><span>בקונ</span>פליקט</span></a>
     </div>
   </div>
 </div>
@@ -52,25 +43,25 @@
 {% block body %}
 <div class="container">
   <div id="items" class="row">
-    {% for report in reports %}
+    {% for defect in defects %}
     <div class="item span4">
       <div class="tags">
         <ul>
-          {% for tag in report.tags %}<a href="#"><li>{{ tag }}</li></a>{% endfor %}
+          {% for tag in defect.tags|sort %}<a href="#"><li>{{ tag }}</li></a>{% endfor %}
         </ul>
       </div>
 
-      <div class="stamp {% if report.status == "fixed" %}stamp-fixed{% elif report.status == "in-progress" %}stamp-in-progress{% else %}stamp-unfixed{% endif %}"></div>
+      <div class="stamp {% if defect.status == "fixed" %}stamp-fixed{% elif defect.status == "in-progress" %}stamp-in-progress{% else %}stamp-unfixed{% endif %}"></div>
 
-      <h2 class="chapter {% if report.status == "fixed" %}chapter-fixed{% elif report.status == "in-progress" %}chapter-in-progress{% else %}chapter-unfixed{% endif %}"><a href="#">{{ report.chapter }}</a></h2>
+      <h2 class="chapter {% if defect.status == "fixed" %}chapter-fixed{% elif defect.status == "in-progress" %}chapter-in-progress{% else %}chapter-unfixed{% endif %}"><a href="#">{{ defect.sub_chapter }} - ליקוי {{ defect.defect_number }}</a></h2>
       <div class="entities">
         <h3>גופים מבוקרים:</h3>
-        <p>{% for entity in report.entities %}<a href="#"><span>{{ entity }}</span></a>{% if not loop.last %},{% endif %}{% endfor %}</p>
+        <p>{% for entity in defect.entities|sort %}<a href="#"><span>{{ entity }}</span></a>{% if not loop.last %}, {% else %}.{% endif %}{% endfor %}</p>
       </div>
 
       <div class="description">
         <h3>תיאור:</h3>
-        <p>{{ report.description }}</p>
+        <p>{{ defect.description }}</p>
       </div>
 
       <div class="footer"></div>

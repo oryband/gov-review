@@ -6,13 +6,17 @@ from flask import Flask, app, render_template
 import redis
 import os
 from json import loads
+from random import randrange
 
 
 app.host = '0.0.0.0'
 DEBUG = True
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
-DB = '%s/db/dump.rdb' % ROOT
+DB_HOST = 'localhost'
+DB_PORT = 6379
+DB_KEY = 'gov-review'
+DB_FILE = '%s/db/dump.rdb' % ROOT
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -20,39 +24,45 @@ app.config.from_object(__name__)
 
 @app.route('/')
 def index():
-    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    #r = redis.StrictRedis(host=DB_HOST, port=DB_PORT, db=0)
+    #reports = r.hgetall(DB_KEY)
+    #for k in reports.keys():  # Convert JSON to dict.
+        #reports[k] = loads(reports[k])
 
-    reports = r.hgetall('gov-review')
-    for k in reports.keys():  # Convert JSON to dict.
-        reports[k] = loads(reports[k])
+    f = open('data.json', 'rb')
+    data = loads(f.read())
+    chapters = data['chapters']
+    f.close()
 
-    return render_template('index.html', reports=reports.values())
+    # Loads random defects.
+    defects = []
+    l = len(chapters)
+    for x in range(4):
+        c = randrange(l)
+        ll = len(chapters[c]['sub-chapters'])
+        sc = randrange(ll)
+        sub_chapters = chapters[c]['sub-chapters']
+        lll = len(sub_chapters[sc]['defects'])
+        d = randrange(lll)
+        ds = sub_chapters[sc]['defects'][d]
+
+        defects.append({
+            'chapter': c,
+            'sub_chapter': sub_chapters[sc]['name'],
+            'defect_number': d,
+            'tags': ds['tags'],
+            'status': ds['status'],
+            'entities': sub_chapters[sc]['entities'],
+            'url': ds['url'],
+            'description': ds['description']
+        })
+
+    return render_template('index.html', defects=defects)
 
 
-@app.route('/add/')
-def add(report):
+@app.route('/add')
+def add():
     return render_template('add.html')
-
-
-#class Report(Form):
-    #id = TextField(u'מס\' דו"חות')
-    #cp = TextField(u'פרק')  # Chapter.
-    #ent = TextField(u'גופים מבוקרים')  # Critisized entities.
-    #url = TextField(u'קישור')
-    #desc = TextArea(u'מעקב')  # Description.
-    #res = TextArea(u'החלטת הממשלה')  # Government resolution.
-    #r_ent = TextField(u'הגוף המגיב')  # Remarking entity.
-    #r_desc = TextArea(u'תוכן ההערה')
-
-
-#@app.route('/add', methods=['GET', 'POST'])
-#def add(id):
-    #if request.method == 'POST' and form.validate():
-        #form = Report(request.form)
-        ## TODO: get dada from form & update db.
-        #return redirect(url_for('index'))
-    #else:
-        #return render_template('add.html', form=form)
 
 
 if __name__ == '__main__':

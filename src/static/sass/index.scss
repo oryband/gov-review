@@ -1,18 +1,6 @@
 @import "scssbase";
 
 
-.hero-unit {
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  @include border-radius(0);
-}
-
-#filters {
-  margin-bottom: 20px;
-  padding: 10px 40px 10px 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 #searchbox {
   height: 30px;
   font-size: 25px;
@@ -103,7 +91,10 @@
       padding: 5px;
       font-size: 1.2em;
       span {
-        color: #3c3c3c;
+        color: #847D6B;
+        &:hover {
+          color: #3c3c3c;
+        }
       }
     }
   }
@@ -114,10 +105,10 @@
   .description {
     @include background(image-url("hr.png") repeat-x center -2px);
     padding-top: 0.5em;
+    height: image-height("card.png") - 293;
     p {
       overflow: hidden;
-      height: image-height("card.png") - 250;
-      /*height: 637px;*/
+      height: inherit;
     }
   }
 }

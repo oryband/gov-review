@@ -39,16 +39,16 @@
           <!--Logged in as <a href="#" class="navbar-link">Username</a>-->
           <!--</p>-->
           <ul class="nav">
-            <li class="active"><a href="#">ראשי</a></li>
-            <li><a href="#about">הוסף</a></li>
+            <li class="{% block main_class %}{% endblock %}"><a href="/">ראשי</a></li>
+            <li class="{% block add_class %}{% endblock %}"><a href="/add">הוסף</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
 
-  {% block header %} {% endblock %}
-  {% block body %} {% endblock %}
-  {% block footer %} {% endblock %}
+  {% block header %}{% endblock %}
+  {% block body %}{% endblock %}
+  {% block footer %}{% endblock %}
 </body>
 </html>

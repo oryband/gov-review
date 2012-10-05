@@ -25,3 +25,15 @@ h4 {
   color: #808998;
 }
 
+.hero-unit {
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  @include border-radius(0);
+}
+
+.page-header {
+  margin: 0 0 20px 0;
+  padding: 10px 40px 10px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: none;
+}
