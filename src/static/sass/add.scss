@@ -1,0 +1,15 @@
+@import "scssbase";
+
+h1, legend, .help-block {
+  color: white;
+}
+
+legend {
+  margin-bottom: 5px;
+  font-size: 1.5em;
+  border-style: none;
+}
+
+.btn {
+  margin-right: 5px;
+}

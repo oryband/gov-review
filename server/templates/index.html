@@ -53,7 +53,7 @@
 
       <div class="stamp {% if defect.status == "fixed" %}stamp-fixed{% elif defect.status == "in-progress" %}stamp-in-progress{% else %}stamp-unfixed{% endif %}"></div>
 
-      <h2 class="chapter {% if defect.status == "fixed" %}chapter-fixed{% elif defect.status == "in-progress" %}chapter-in-progress{% else %}chapter-unfixed{% endif %}"><a href="#">{{ defect.sub_chapter }} - ליקוי {{ defect.defect_number }}</a></h2>
+      <h2 class="chapter {% if defect.status == "fixed" %}chapter-fixed{% elif defect.status == "in-progress" %}chapter-in-progress{% else %}chapter-unfixed{% endif %}"><a href="edit/{{ defect.chapter }}/{{ defect.sub_chapter }}/{{ defect.defect }}">{{ defect.name }} - ליקוי {{ defect.defect }}</a></h2>
       <div class="entities">
         <h3>גופים מבוקרים:</h3>
         <p>{% for entity in defect.entities|sort %}<a href="#"><span>{{ entity }}</span></a>{% if not loop.last %}, {% else %}.{% endif %}{% endfor %}</p>

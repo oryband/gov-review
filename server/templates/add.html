@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+<link href="{{ url_for('static', filename='css/add.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block add_class %}active{% endblock %}
+
+{% block header %}
+<div class="page-header">
+  <h1>הוספת דו"ח</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <form id="add" method="post" action="/new" autocomplete="on">
+    <div class="controls controls-row">
+      <legend>פרק - מס', שם</legend>
+      <input id="chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.chapter }}{% endif %}" autofocus></input>
+      <input id="chapter-name" class="span11" type="text" name="user" placeholder="שם הפרק" value="{% if defect %}{{ defect.chapter_name }}{% endif %}"></input>
+    </div>
+
+    <div class="controls controls-row">
+      <legend>תת-פרק - מס', שם</legend>
+      <input id="sub-chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.sub_chapter }}{% endif %}"></input>
+      <input id="sub-chapter-name" class="span11" type="text" name="user" placeholder="שם תת-פרק" value="{% if defect %}{{ defect.name }}{% endif %}"></input>
+    </div>
+
+    <div class="controls">
+      <legend>תגיות</legend>
+      <input id="tags" class="span12" type="text" name="user" placeholder="תגית 1, תגית 2, תגית 3" value="{% if defect %}{% for tag in defect.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span></input>
+    </div>
+
+    <div class="controls">
+      <legend>גופים מבוקרים:</legend>
+      <input id="entities" class="span12" type="text" name="user" placeholder="גוף 1, גוף 2, גוף 3" value="{% if defect %}{% for entity in defect.entities %}{{ entity }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span></input>
+    </div>
+
+    <div class="controls">
+      <legend>לקות:</legend>
+      <textarea id="defect" class="span12" type="text" rows="8" name="user" placeholder="טקסט לקות...">{% if defect %}{{ defect.description }}{% endif %}</textarea>
+    </div>
+
+    <div class="controls">
+      <legend>מעקב:</legend>
+
+      {#{{ defect.follow-up }}#}
+      <textarea id="follow-up" class="span12" type="text" rows="8" name="user" placeholder="טקסט מעקב..." value="{% if defect %}{% endif %}"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn">הוסף לקות</button>
+      <button type="submit" class="btn btn-primary pull-left">שמור</button>
+      <button type="button" class="btn pull-left">בטל</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

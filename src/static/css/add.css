@@ -1,0 +1,16 @@
+/* line 3, ../sass/add.scss */
+h1, legend, .help-block {
+  color: white;
+}
+
+/* line 7, ../sass/add.scss */
+legend {
+  margin-bottom: 5px;
+  font-size: 1.5em;
+  border-style: none;
+}
+
+/* line 13, ../sass/add.scss */
+.btn {
+  margin-right: 5px;
+}

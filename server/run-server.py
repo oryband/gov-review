@@ -48,13 +48,16 @@ def index():
 
         defects.append({
             'chapter': c,
-            'sub_chapter': sub_chapters[sc]['name'],
-            'defect_number': d,
+            'chapter_name': chapters[c]['name'],
+            'sub_chapter': sc,
+            'name': sub_chapters[sc]['name'],
+            'defect': d,
             'tags': ds['tags'],
             'status': ds['status'],
             'entities': sub_chapters[sc]['entities'],
             'url': ds['url'],
-            'description': ds['description']
+            'description': ds['description'],
+            'follow-up': ds['follow-up']
         })
 
     return render_template('index.html', defects=defects)
@@ -63,6 +66,32 @@ def index():
 @app.route('/add')
 def add():
     return render_template('add.html')
+
+
+@app.route('/edit/<int:chapter>/<int:sub_chapter>/<int:defect>')
+def edit(chapter, sub_chapter, defect):
+    f = open('data.json', 'rb')
+    chapters = loads(f.read())['chapters']
+    f.close()
+
+    sc = chapters[chapter]['sub-chapters'][sub_chapter]
+    d = sc['defects'][defect]
+
+    defect = {
+        'chapter': chapter,
+        'chapter_name': chapters[chapter]['name'],
+        'sub_chapter': sub_chapter,
+        'name': sc['name'],
+        'defect': defect,
+        'tags': d['tags'],
+        'status': d['status'],
+        'entities': sc['entities'],
+        'url': d['url'],
+        'description': d['description'],
+        'follow-up': d['follow-up']
+    }
+
+    return render_template('add.html', defect=defect)
 
 
 if __name__ == '__main__':
