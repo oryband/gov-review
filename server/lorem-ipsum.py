@@ -50,14 +50,15 @@ if __name__ == '__main__':
                 })
 
             sub_chapters.append({
-                'name': '%s-%s' % (sub_chapter, choice(lorem_split)),
+                'name': ' '.join([choice(lorem_split)
+                                  for word in range(randrange(1, 21))]),
                 'entities': cur_entities,
                 'defects': defects
             })
 
         chapters.append({
             'name': 'chapter-%s' % chapter,
-            'sub_chapters': sub_chapters
+            'sub-chapters': sub_chapters
         })
 
     resolutions = {}
