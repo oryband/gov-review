@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-from flask import Flask, app, render_template
-#from wtforms import Form, TextField, TextArea
+from flask import Flask, app, request, render_template
+from wtforms import Form, IntegerField, SelectField, TextField, TextAreaField
 import redis
 import os
 from json import loads
@@ -88,10 +88,33 @@ def edit(chapter, sub_chapter, defect):
         'entities': sc['entities'],
         'url': d['url'],
         'description': d['description'],
-        'follow-up': d['follow-up']
+        'follow_up': d['follow-up']
     }
 
     return render_template('add.html', defect=defect)
+
+
+@app.route('/update/<int:chapter>/<int:sub_chapter>/<int:defect>')
+def update(chapter, sub_chapter, defect):
+    form = DefectForm(request.form)
+    if request.method == 'POST' and form.validate():
+        # TODO: EDIT DATA
+        pass
+
+
+class DefectForm(Form):
+    chapter_number = IntegerField('chapter-number')
+    chapter_name = TextField('chapter-number')
+    sub_chapter = TextField('sub-chapter')
+    sub_chapter_number = IntegerField('sub-chapter-number')
+    defect = TextField('defect')
+    tags = TextField('tags')
+    status = SelectField('status', choices=[('unfixed', 'unfixed'),
+                                            ('in-progress', 'in-progress'),
+                                            ('fixed', 'fixed')])
+    entities = TextField('entities')
+    description = TextAreaField('description')
+    follow_up = TextAreaField('follow-up')
 
 
 if __name__ == '__main__':

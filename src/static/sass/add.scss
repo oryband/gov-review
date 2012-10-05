@@ -1,6 +1,6 @@
 @import "scssbase";
 
-h1, legend, .help-block {
+h1, label, legend, .help-block {
   color: white;
 }
 
@@ -10,6 +10,17 @@ legend {
   border-style: none;
 }
 
-.btn {
-  margin-right: 5px;
+input[type="text"], input[type="number"], textarea {
+  font-family: "PauzaFOT", Arial, sans-serif;
+  font-size: 1.2em;
+}
+
+label.radio {
+  margin-left: 20px;
+  padding-right: 2px;
+  font-size: 2em;
+}
+
+input[type="radio"]:checked + label {
+  color: #fffcd9;
 }

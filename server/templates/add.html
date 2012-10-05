@@ -18,24 +18,24 @@
   <form id="add" method="post" action="/new" autocomplete="on">
     <div class="controls controls-row">
       <legend>פרק - מס', שם</legend>
-      <input id="chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.chapter }}{% endif %}" autofocus></input>
-      <input id="chapter-name" class="span11" type="text" name="user" placeholder="שם הפרק" value="{% if defect %}{{ defect.chapter_name }}{% endif %}"></input>
+      <input id="chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.chapter }}{% endif %}" autofocus>
+      <input id="chapter-name" class="span11" type="text" name="user" placeholder="שם הפרק" value="{% if defect %}{{ defect.chapter_name }}{% endif %}">
     </div>
 
     <div class="controls controls-row">
       <legend>תת-פרק - מס', שם</legend>
-      <input id="sub-chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.sub_chapter }}{% endif %}"></input>
-      <input id="sub-chapter-name" class="span11" type="text" name="user" placeholder="שם תת-פרק" value="{% if defect %}{{ defect.name }}{% endif %}"></input>
+      <input id="sub-chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.sub_chapter }}{% endif %}">
+      <input id="sub-chapter-name" class="span11" type="text" name="user" placeholder="שם תת-פרק" value="{% if defect %}{{ defect.name }}{% endif %}">
     </div>
 
     <div class="controls">
       <legend>תגיות</legend>
-      <input id="tags" class="span12" type="text" name="user" placeholder="תגית 1, תגית 2, תגית 3" value="{% if defect %}{% for tag in defect.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span></input>
+      <input id="tags" class="span12" type="text" name="user" placeholder="תגית 1, תגית 2, תגית 3" value="{% if defect %}{% for tag in defect.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span>
     </div>
 
     <div class="controls">
       <legend>גופים מבוקרים:</legend>
-      <input id="entities" class="span12" type="text" name="user" placeholder="גוף 1, גוף 2, גוף 3" value="{% if defect %}{% for entity in defect.entities %}{{ entity }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span></input>
+      <input id="entities" class="span12" type="text" name="user" placeholder="גוף 1, גוף 2, גוף 3" value="{% if defect %}{% for entity in defect.entities %}{{ entity }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span>
     </div>
 
     <div class="controls">
@@ -45,15 +45,23 @@
 
     <div class="controls">
       <legend>מעקב:</legend>
+      <textarea id="follow-up" class="span12" type="text" rows="8" name="user" placeholder="טקסט מעקב...">{% if defect %}{{ defect.follow_up }}{% endif %}</textarea>
+    </div>
 
-      {#{{ defect.follow-up }}#}
-      <textarea id="follow-up" class="span12" type="text" rows="8" name="user" placeholder="טקסט מעקב..." value="{% if defect %}{% endif %}"></textarea>
+    <div class="controls">
+      <legend>סטטוס:</legend>
+      <input type="radio" name="status" id="unfixed" value="unfixed"{% if not defect %} checked{% elif defect.status == "unfixed"%} checked{% endif %}>
+      <label class="radio inline">לא-בטיפול</label>
+
+      <input type="radio" name="status" id="in-progress" value="in-progress"{% if defect %}{% if defect.status == "in-progress"%} checked{% endif %}{% endif %}>
+      <label class="radio inline">בתהליך</label>
+
+      <input type="radio" name="status" id="fixed" value="fixed"{% if defect %}{% if defect.status == "fixed"%} checked{% endif %}{% endif %}>
+      <label class="radio inline">תוקן</label>
     </div>
 
     <div class="form-actions">
-      <button type="button" class="btn">הוסף לקות</button>
-      <button type="submit" class="btn btn-primary pull-left">שמור</button>
-      <button type="button" class="btn pull-left">בטל</button>
+      <button type="submit" class="btn btn-primary btn-large pull-left">שמור</button>
     </div>
   </form>
 </div>

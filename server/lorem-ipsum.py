@@ -33,10 +33,6 @@ if __name__ == '__main__':
     for chapter in range(1, 6):
         sub_chapters = []
         for sub_chapter in range(1, 4):
-            cur_entities = sorted(set(
-                [choice(entities) for x in range(randrange(1, 6))]
-            ))
-
             defects = []
             for defect in range(3):
                 defects.append({
@@ -44,15 +40,17 @@ if __name__ == '__main__':
                         [choice(tags) for x in range(randrange(1, 11))]
                     )),
                     'url': 'http://google.com',
-                    'description': lorem,
                     'status': choice(('fixed', 'in-progress', 'unfixed')),
-                    'follow-up': dict.fromkeys(cur_entities, lorem),
+                    'description': lorem,
+                    'follow-up': lorem
                 })
 
             sub_chapters.append({
                 'name': ' '.join([choice(lorem_split)
                                   for word in range(randrange(1, 21))]),
-                'entities': cur_entities,
+                'entities': sorted(set(
+                    [choice(entities) for x in range(randrange(1, 6))]
+                )),
                 'defects': defects
             })
 

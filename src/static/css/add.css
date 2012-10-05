@@ -1,5 +1,5 @@
 /* line 3, ../sass/add.scss */
-h1, legend, .help-block {
+h1, label, legend, .help-block {
   color: white;
 }
 
@@ -11,6 +11,19 @@ legend {
 }
 
 /* line 13, ../sass/add.scss */
-.btn {
-  margin-right: 5px;
+input[type="text"], input[type="number"], textarea {
+  font-family: "PauzaFOT", Arial, sans-serif;
+  font-size: 1.2em;
+}
+
+/* line 18, ../sass/add.scss */
+label.radio {
+  margin-left: 20px;
+  padding-right: 2px;
+  font-size: 2em;
+}
+
+/* line 24, ../sass/add.scss */
+input[type="radio"]:checked + label {
+  color: #fffcd9;
 }
