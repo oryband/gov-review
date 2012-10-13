@@ -1,64 +1,34 @@
 #!/usr/bin/env python
 # encoding: utf8
 
+from documents import *
+
 from flask import Flask, app, request, render_template
-from wtforms import Form, IntegerField, SelectField, TextField, TextAreaField
-import redis
+from mongoengine import connect
+
 import os
-from json import loads
+from json import loads, dumps
 from random import randrange
+from pprint import pprint
 
 
 app.host = '0.0.0.0'
 DEBUG = True
 
+DB_NAME = 'gov_review'
 ROOT = os.path.abspath(os.path.dirname(__file__))
-DB_HOST = 'localhost'
-DB_PORT = 6379
-DB_KEY = 'gov-review'
-DB_FILE = '%s/db/dump.rdb' % ROOT
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
 
-@app.route('/')
+
+@app.route('/', methods=['GET'])
 def index():
-    #r = redis.StrictRedis(host=DB_HOST, port=DB_PORT, db=0)
-    #reports = r.hgetall(DB_KEY)
-    #for k in reports.keys():  # Convert JSON to dict.
-        #reports[k] = loads(reports[k])
+    connection = connect(DB_NAME)
+    defects = connection
 
-    f = open('data.json', 'rb')
-    data = loads(f.read())
-    chapters = data['chapters']
-    f.close()
-
-    # Loads random defects.
-    defects = []
-    l = len(chapters)
-    for x in range(4):
-        c = randrange(l)
-        ll = len(chapters[c]['sub-chapters'])
-        sc = randrange(ll)
-        sub_chapters = chapters[c]['sub-chapters']
-        lll = len(sub_chapters[sc]['defects'])
-        d = randrange(lll)
-        ds = sub_chapters[sc]['defects'][d]
-
-        defects.append({
-            'chapter': c,
-            'chapter_name': chapters[c]['name'],
-            'sub_chapter': sc,
-            'name': sub_chapters[sc]['name'],
-            'defect': d,
-            'tags': ds['tags'],
-            'status': ds['status'],
-            'entities': sub_chapters[sc]['entities'],
-            'url': ds['url'],
-            'description': ds['description'],
-            'follow-up': ds['follow-up']
-        })
+    defects = Defect.objects.limit(5)
 
     return render_template('index.html', defects=defects)
 
@@ -68,53 +38,70 @@ def add():
     return render_template('add.html')
 
 
-@app.route('/edit/<int:chapter>/<int:sub_chapter>/<int:defect>')
-def edit(chapter, sub_chapter, defect):
-    f = open('data.json', 'rb')
-    chapters = loads(f.read())['chapters']
-    f.close()
+@app.route('/edit/<int:c>/<int:sc>/<int:d>', methods=['GET'])
+def edit(c, sc, d):
+    r = redis.StrictRedis(host=DB_HOST, port=DB_PORT, db=0)
+    chapter = loads(r.hgetall(DB_NAME)['chapters'])[c]
 
-    sc = chapters[chapter]['sub-chapters'][sub_chapter]
-    d = sc['defects'][defect]
+    sub_chapter = chapter['sub-chapters'][sc]
+    defect = sub_chapter['defects'][d]
 
-    defect = {
-        'chapter': chapter,
-        'chapter_name': chapters[chapter]['name'],
-        'sub_chapter': sub_chapter,
-        'name': sc['name'],
-        'defect': defect,
-        'tags': d['tags'],
-        'status': d['status'],
-        'entities': sc['entities'],
-        'url': d['url'],
-        'description': d['description'],
-        'follow_up': d['follow-up']
+    response = {
+        'chapter': c,
+        'chapter_name': chapter['name'],
+        'sub_chapter': sc,
+        'name': sub_chapter['name'],
+        'defect': d,
+        'status': defect['status'],
+        'url': defect['url'],
+        'tags': defect['tags'],
+        'entities': sub_chapter['entities'],
+        'description': defect['description'],
+        'follow_up': defect['follow-up']
     }
 
-    return render_template('add.html', defect=defect)
+    return render_template('add.html', defect=response)
 
 
-@app.route('/update/<int:chapter>/<int:sub_chapter>/<int:defect>')
-def update(chapter, sub_chapter, defect):
-    form = DefectForm(request.form)
-    if request.method == 'POST' and form.validate():
-        # TODO: EDIT DATA
-        pass
+# chapter/sub-chapter/defect.
+@app.route('/update/<int:c>/<int:sc>/<int:d>', methods=['POST'])
+def update(c, sc, d):
+    #form = DefectForm(request.form)
+    form = request.form
+    #if form.validate():
+
+    r = redis.StrictRedis(host=DB_HOST, port=DB_PORT, db=0)
+    chapters = loads(r.hgetall(DB_NAME)['chapters'])
+
+    sub_chapter = chapters[c]['sub-chapters'][sc]
+    sub_chapter['entities'] = [entity.strip() for
+                               entity in form['entities'].split(',')]
+
+    defect = sub_chapter['defects'][d]
+    defect['status'] = form['status']
+    defect['url'] = form['url']
+    defect['tags'] = [tag.strip() for tag in form['tags'].split(',')]
+    defect['description'] = form['description']
+    defect['follow-up'] = form['follow-up']
+    print '------here------'
+
+    r.hset(DB_NAME, 'chapters', dumps(chapters))
+    r.save()
+
+    return render_template('index.html')
 
 
-class DefectForm(Form):
-    chapter_number = IntegerField('chapter-number')
-    chapter_name = TextField('chapter-number')
-    sub_chapter = TextField('sub-chapter')
-    sub_chapter_number = IntegerField('sub-chapter-number')
-    defect = TextField('defect')
-    tags = TextField('tags')
-    status = SelectField('status', choices=[('unfixed', 'unfixed'),
-                                            ('in-progress', 'in-progress'),
-                                            ('fixed', 'fixed')])
-    entities = TextField('entities')
-    description = TextAreaField('description')
-    follow_up = TextAreaField('follow-up')
+#@app.route('/delete/<int:chapter>/<int:sub_chapter>/<int:defect>')
+#def delete(chapter, sub_chapter, defect):
+    #f = open(DB_FILE, 'w+b')
+    #data = loads(f.read())
+
+    #sub_chapter = data['chapters'][chapter]['sub-chapters'][sub_chapter]
+    #del(sub_chapter['defects'][defect])
+    #if len(sub_chapter['defect']) == 0:
+        #del(data['chapters'][chapter]['sub-chapters'])
+
+    #f.close()
 
 
 if __name__ == '__main__':

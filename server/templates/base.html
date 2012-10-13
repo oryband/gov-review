@@ -9,8 +9,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>{% block title %}{% endblock %}</title>
-  <meta name="description" content="{% block description%}{% endblock %}">
+  <title>{% block title %}{% endblock title %}</title>
+  <meta name="description" content="{% block description%}{% endblock description %}">
 
   {% block css %}
   <link href="{{ url_for('static', filename='css/bootstrap.rtl.css') }}" rel="stylesheet">
@@ -18,6 +18,12 @@
   {% endblock css %}
 
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  {% block js %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write("<script src=\"{{ url_for('static', filename='js/vendor/jquery-1.8.2.min.js') }}\"><\/script>")</script>
+  {% endblock js %}
+
   {% endblock head %}
 </head>
 <body>
