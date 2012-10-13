@@ -4,17 +4,17 @@
 purposes.
 """
 
+from documents import *
+from run_server import DB_NAME
 
-if __name__ == '__main__':
-    from documents import *
-    from run_server import DB_NAME
+from mongoengine import connect
 
-    from mongoengine import connect
+from random import choice, sample, randint
+from datetime import datetime
+from re import sub
 
-    from random import choice, sample, randint
-    from datetime import datetime
-    from re import sub
 
+def generate_initial_data():
     # Data size.
     TAG_AMOUNT = 10
     ENTITY_AMOUNT = 20
@@ -67,9 +67,9 @@ if __name__ == '__main__':
                     monitored_entities=sample(monitored_entities,
                                               randint(1, 4)),
                     tags=sample(tags, randint(1, 4)))
-                for di, me in enumerate(sample(
-                    sc.monitored_entities, randint(
-                        1, len(sc.monitored_entities))), 1):
+                for di, me in enumerate(
+                    sample(sc.monitored_entities,
+                           randint(1, len(sc.monitored_entities))), 1):
                     Defect.objects.create(
                         sub_chapter=sc, order=di,
                         description=lorem,
