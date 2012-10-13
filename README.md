@@ -5,11 +5,11 @@
 
 ## Set-up
 
-This project uses [Flask](http://flask.pocoo.org/) as a web-framework,\
-[MongoDB](http://mongodb.org/) as a DB with\
-[PyMongo](http://api.mongodb.org/python/current/) as a driver and\
+This project uses [Flask](http://flask.pocoo.org/) as a web-framework.
+[MongoDB](http://mongodb.org/) is DB backend,
+with [PyMongo](http://api.mongodb.org/python/current/) as a driver and
 [mongoengine](http://mongoengine.org/) as an ORM.
-Also, it uses [Compass](http://compass-style.org/install) and\
+Also, it uses [Compass](http://compass-style.org/install) and
 [Sass](http://sass-lang.com/download) for CSS.
 
 * `brew install python ruby mongodb`
@@ -18,10 +18,11 @@ Also, it uses [Compass](http://compass-style.org/install) and\
 
 ## Test Run
 
-* `./run_mongo.sh` - Runs in foreground.
-* `./run_server.py` - Flask app.
+- `./generate_initial_data.sh` - Populates DB with Hebrew **lorem-ipsum** data
+- Execute both of these simultaneously:
+  - `./run_mongo.sh` - Runs in foreground.
+  - `./run_server.py` - Flask app.
 
 ## Helpful Utilities
 
 * `./run_tests.sh`
-* `./generate_initial_data.sh` - Populates DB with Hebrew **lorem-ipsum** data.
