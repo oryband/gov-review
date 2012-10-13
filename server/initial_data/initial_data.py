@@ -17,7 +17,7 @@ from re import sub
 def generate_initial_data():
     # Data size.
     TAG_AMOUNT = 10
-    ENTITY_AMOUNT = 20
+    MONITORED_ENTITY_AMOUNT = 20
 
     VOLUME_AMOUNT = 2
     SECTION_AMOUNT = 2  # Per volume.
@@ -34,7 +34,7 @@ def generate_initial_data():
     connection.drop_database(DB_NAME)  # WARNING: flushes db.
 
     # Fetch lorem-ipsum source text.
-    f = open('lorem.txt', 'rb')
+    f = open('initial_data/lorem.txt', 'rb')
     lorem = f.read()
     f.close()
 
@@ -46,7 +46,7 @@ def generate_initial_data():
     # Generate tag and monitored entities stash.
     monitored_entities = [MonitoredEntity.objects.create(
         name=generate_text(lorem_words, 10))
-        for _ in range(ENTITY_AMOUNT)]
+        for _ in range(MONITORED_ENTITY_AMOUNT)]
     tags = [Tags.objects.create(
         name=generate_text(lorem_words, 3)) for _ in range(TAG_AMOUNT)]
 
