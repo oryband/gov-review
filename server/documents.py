@@ -47,7 +47,7 @@ class SubChapter(Document):
 
 
 class DefectReview(EmbeddedDocument):
-    monitored_entity = ReferenceField(MonitoredEntity)
+    monitored_entity = ReferenceField(MonitoredEntity, required=True)
     description = StringField(required=True)
 
 
@@ -59,7 +59,8 @@ class Defect(Document):
     reviews = ListField(EmbeddedDocumentField(DefectReview),
                         required=True, default=list)
     url = URLField()
-    status = StringField(choices=('fixed', 'in_progress', 'unfixed'))
+    status = StringField(required=True,
+                         choices=('fixed', 'in_progress', 'unfixed'))
     time_updated = DateTimeField(required=True, default=datetime.now)
     meta = {'indexes': ['time_updated', 'status'], 'ordering': ['+order']}
 
