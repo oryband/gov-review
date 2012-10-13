@@ -18,11 +18,12 @@ Also, it uses [Compass](http://compass-style.org/install) and
 
 ## Test Run
 
-1. `./generate_initial_data.sh` - Populates DB with Hebrew **lorem-ipsum** data
-2. Execute both of these simultaneously:
+1. `cd server`
+2. `./generate_initial_data.sh` - Populates DB with Hebrew **lorem-ipsum** data
+3. Execute both of these simultaneously:
   * `./run_mongo.sh` - Runs in foreground.
   * `./run_server.py` - Flask app.
 
 ## Helpful Utilities
 
-* `./run_tests.sh`
+* `server/run_tests.sh`
