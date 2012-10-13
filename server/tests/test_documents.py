@@ -44,14 +44,3 @@ class TestDocuments(unittest.TestCase):
                                   randint(1, 12),
                                   randint(1, 28)),
                 description='resolution %d' % i)
-
-
-if __name__ == '__main__':
-    from run_server import DB_NAME
-    from mongoengine import connect
-
-    db_name = '%s_test' % DB_NAME
-    c = connect(db_name)
-    c.drop_database(db_name)  # flush db.
-    unittest.main()
-    c.close()

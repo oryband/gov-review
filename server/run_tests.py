@@ -8,8 +8,9 @@ import unittest
 from tests.test_documents import TestDocuments
 
 
-db_name = '%s_test' % DB_NAME
-c = connect(db_name)
-c.drop_database(db_name)  # flush db.
-unittest.main()
-c.close()
+if __name__ == '__main__':
+    db_name = '%s_test' % DB_NAME
+    c = connect(db_name)
+    c.drop_database(db_name)  # flush db.
+    unittest.main()
+    c.close()
