@@ -3,6 +3,8 @@
 
 from mongoengine import *
 
+from datetime import datetime
+
 
 class MonitoredEntity(Document):
     name = StringField(required=True)
@@ -16,21 +18,21 @@ class Tags(Document):
 
 class Volume(Document):
     order = IntField(required=True, min_value=1, unique=True)
-    meta = {'indexes': ['order']}
+    meta = {'indexes': ['order'], 'ordering': ['+order']}
 
 
 class Section(Document):
     volume = ReferenceField(Volume, required=True)
     order = IntField(required=True, min_value=1, unique_with='volume')
     title = StringField(required=True)
-    meta = {'indexes': ['order']}
+    meta = {'indexes': ['order'], 'ordering': ['+order']}
 
 
 class Chapter(Document):
     section = ReferenceField(Section, required=True)
     order = IntField(required=True, min_value=1, unique_with='section')
     title = StringField(required=True)
-    meta = {'indexes': ['order']}
+    meta = {'indexes': ['order'], 'ordering': ['+order']}
 
 
 class SubChapter(Document):
@@ -41,7 +43,7 @@ class SubChapter(Document):
                                    required=True, default=list)
     tags = ListField(ReferenceField(Tags),
                      required=True, default=list)
-    meta = {'indexes': ['order']}
+    meta = {'indexes': ['order'], 'ordering': ['+order']}
 
 
 class DefectReview(EmbeddedDocument):
@@ -58,11 +60,12 @@ class Defect(Document):
                         required=True, default=list)
     url = URLField()
     status = StringField(choices=('fixed', 'in_progress', 'unfixed'))
-    meta = {'indexes': ['order', 'status']}
+    time_updated = DateTimeField(required=True, default=datetime.now)
+    meta = {'indexes': ['time_updated', 'status'], 'ordering': ['+order']}
 
 
 class Resolution(Document):
     tags = ListField(ReferenceField(Tags), required=True, default=list)
-    datetime = DateTimeField(required=True)
+    time_updated = DateTimeField(required=True, default=datetime.now)
     description = StringField(required=True)
-    meta = {'indexes': ['datetime']}
+    meta = {'indexes': ['time_updated'], 'ordering': ['-time_updated']}

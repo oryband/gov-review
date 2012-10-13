@@ -40,7 +40,4 @@ class TestDocuments(unittest.TestCase):
         for i in range(1, 10):
             Resolution.objects.create(
                 tags=sample(t, randint(1, 4)),
-                datetime=datetime(randint(1995, 2011),
-                                  randint(1, 12),
-                                  randint(1, 28)),
                 description='resolution %d' % i)

@@ -83,9 +83,6 @@ def generate_initial_data():
     for ri in range(1, RESOLUTION_AMOUNT + 1):
         Resolution.objects.create(
             tags=sample(tags, randint(1, 4)),
-            datetime=datetime(randint(1995, 2011),
-                              randint(1, 12),
-                              randint(1, 28)),
             description=lorem)
 
     connection.close()
