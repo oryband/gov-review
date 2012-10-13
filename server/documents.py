@@ -1,82 +1,60 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-s = __import__("run-server")  # Because of dash `-` in file name.
+from mongoengine import *
 
-import redis
 
-from json import dumps
-from random import choice, randrange
-from datetime import date
-from re import sub
+class MonitoredEntity(Document):
+    name = StringField(required=True)
 
-if __name__ == '__main__':
-    #r = redis.StrictRedis(host=s.DB_HOST, port=s.DB_PORT, db=0)
-    #r.flushall()  # Clear db.
 
-    f = open('lorem.txt', 'rb')
-    lorem = f.read()
-    f.close()
+class Tags(Document):
+    name = StringField(required=True)
 
-    # Filter dots, commas, spaces, etc.
-    lorem = sub(r'[\.\,\-]', r'', lorem)
-    lorem_split = lorem.split(' ')
-    lorem_split = [word.strip() for word in lorem_split if word.strip()]
 
-    tags = [choice(lorem_split) for x in range(10)]
-    entities = [' '.join(
-        [choice(lorem_split) for words in range(randrange(10))]
-    ) for x in range(10)]
+class Volume(Document):
+    order = IntField(required=True, min_value=1, unique=True)
 
-    # Populate db/file with initial lorem-ipsum data.
-    chapters = []
-    for chapter in range(1, 6):
-        sub_chapters = []
-        for sub_chapter in range(1, 4):
-            defects = []
-            for defect in range(3):
-                defects.append({
-                    'tags': sorted(set(
-                        [choice(tags) for x in range(randrange(1, 11))]
-                    )),
-                    'url': 'http://google.com',
-                    'status': choice(('fixed', 'in-progress', 'unfixed')),
-                    'description': lorem,
-                    'follow-up': lorem
-                })
 
-            sub_chapters.append({
-                'name': ' '.join([choice(lorem_split)
-                                  for word in range(randrange(1, 21))]),
-                'entities': sorted(set(
-                    [choice(entities) for x in range(randrange(1, 6))]
-                )),
-                'defects': defects
-            })
+class Section(Document):
+    volume = ReferenceField(Volume, required=True)
+    order = IntField(required=True, min_value=1, unique_with='volume')
+    title = StringField(required=True)
 
-        chapters.append({
-            'name': ' '.join([choice(lorem_split)
-                              for word in range(randrange(1, 21))]),
-            'sub-chapters': sub_chapters
-        })
 
-    resolutions = {}
-    for resolution in range(15):
-        resolutions[date(2011,
-                         choice(range(1, 13)),
-                         choice(range(1, 31))
-                    ).isoformat()] = {
-                        'tags': sorted(set(
-                            [choice(tags) for x in range(randrange(1, 11))]
-                        )),
-                        'description': lorem
-                    }
+class Chapter(Document):
+    section = ReferenceField(Section, required=True)
+    order = IntField(required=True, min_value=1, unique_with='section')
+    title = StringField(required=True)
 
-    #r.hset(s.DB_KEY, 'chapters', dumps(chapters))
-    #r.hset(s.DB_KEY, 'resolutions', dumps(resolutions))
-    #r.save()  # Save to db.
 
-    d = {'chapters': chapters, 'resolutions': resolutions}
-    f = open('data.json', 'wb')
-    f.write(dumps(d))
-    f.close()
+class SubChapter(Document):
+    chapter = ReferenceField(Chapter, required=True)
+    order = IntField(min_value=1, unique_with='chapter')
+    title = StringField(required=True)
+    monitored_entities = ListField(ReferenceField(MonitoredEntity),
+                                   required=True, default=list)
+    tags = ListField(ReferenceField(Tags),
+                     required=True, default=list)
+
+
+class DefectReview(EmbeddedDocument):
+    monitored_entity = ReferenceField(MonitoredEntity)
+    description = StringField(required=True)
+
+
+class Defect(Document):
+    sub_chapter = ReferenceField(SubChapter, required=True)
+    order = IntField(required=True, min_value=1,
+                     unique_with='sub_chapter')
+    description = StringField(required=True)
+    reviews = ListField(EmbeddedDocumentField(DefectReview),
+                        required=True, default=list)
+    url = URLField()
+    status = StringField(choices=('fixed', 'in_progress', 'unfixed'))
+
+
+class Resolution(Document):
+    tags = ListField(ReferenceField(Tags), required=True, default=list)
+    datetime = DateTimeField(required=True)
+    description = StringField(required=True)
