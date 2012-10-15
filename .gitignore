@@ -2,20 +2,19 @@
 *.doc[x]
 
 # SASS
-/src/static/.sass-cache
+.sass-cache
 
 # virtualenv
 /venv
 
 # Python
-*.py[co]
+*.py[cod]
 
 # ctags
 /tags
 
-# OSX finder
+# OSX Finder
 .DS_Store
 
 # Vim
 *.swp
-
