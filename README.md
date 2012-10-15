@@ -3,7 +3,7 @@
 * [Discussion](https://groups.google.com/d/forum/gov-supervisor).
 * [Specs](https://docs.google.com/folder/d/0B3UwEwwe_DvDUm1JY2E2ZTdtdmM/edit).
 
-## Set-up
+## Requirements
 
 This project uses [Flask](http://flask.pocoo.org/) as a web-framework.
 [MongoDB](http://mongodb.org/) is the DB backend,
@@ -11,10 +11,15 @@ with [PyMongo](http://api.mongodb.org/python/current/) as its driver,
 and [mongoengine](http://mongoengine.org/) as its ORM.
 Also, it uses [Compass](http://compass-style.org/install) and
 [Sass](http://sass-lang.com/download) for CSS.
+Oh, and [Twitter Bootstrap](http://twitter.github.com/bootstrap/),
+with [AbduallahDiaa's RTL version](https://github.com/AbdullahDiaa/Bootstrap-RTL) of it.
 
-* `brew install python ruby mongodb` - On **OS X**. On **Ubuntu** you can use `apt-get` and friends.
+## Set-up
+
+* `clone`, `virtualenv`, and whatever is necessary.
+* `[brew](http://mxcl.github.com/homebrew/) install python ruby mongodb` - On **OS X**. On **Ubuntu** you can use `apt-get` and friends.
 * `pip install -r ./requirements.txt` for Python packages.
-* `gem update --system && gem install compass` - This will install [Compass](http://compass-style.org/install), which will also install [Sass](http://sass-lang.com/download) for you.
+* `[gem update --system && gem install compass](http://compass-style.org/install)` - This will also install [Sass](http://sass-lang.com/download) for you.
 
 ## Test Run
 
