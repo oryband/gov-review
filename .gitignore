@@ -1,3 +1,7 @@
+# Word
+*.doc
+*.docx
+
 # SASS
 /src/static/.sass-cache
 
