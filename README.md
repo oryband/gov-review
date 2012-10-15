@@ -23,7 +23,7 @@ with [AbduallahDiaa's RTL version](https://github.com/AbdullahDiaa/Bootstrap-RTL
 
 ## Test Run
 
-1. `cd server`
+1. `cd src/server`
 2. `./generate_initial_data.sh` - Populates DB with Hebrew **lorem-ipsum** data
 3. Execute both of these simultaneously:
   * `./run_mongo.sh` - Runs in foreground.
@@ -31,4 +31,4 @@ with [AbduallahDiaa's RTL version](https://github.com/AbdullahDiaa/Bootstrap-RTL
 
 ## Helpful Utilities
 
-* `server/run_tests.sh`
+* `src/server/run_tests.sh`
