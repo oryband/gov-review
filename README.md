@@ -16,10 +16,10 @@ with [AbduallahDiaa's RTL version](https://github.com/AbdullahDiaa/Bootstrap-RTL
 
 ## Set-up
 
-* `clone`, `virtualenv`, and whatever is necessary.
-* `[brew](http://mxcl.github.com/homebrew/) install python ruby mongodb` - On **OS X**. On **Ubuntu** you can use `apt-get` and friends.
+* `clone`, `virtualenv`, [install Homebrew](http://mxcl.github.com/homebrew/) and whatever is necessary.
+* `brew install python ruby mongodb` - On **Ubuntu** use `apt-get` and friends.
 * `pip install -r ./requirements.txt` for Python packages.
-* `[gem update --system && gem install compass](http://compass-style.org/install)` - This will also install [Sass](http://sass-lang.com/download) for you.
+* `gem update --system && gem install compass` - To install [Compass](http://compass-style.org/install) and [Sass](http://sass-lang.com/download).
 
 ## Test Run
 
