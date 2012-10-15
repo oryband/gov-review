@@ -2,6 +2,8 @@
 
 A website to share the Israeli state comptroller's reports in a simple, readable, and human way.
 
+[Demo site](http://govinspector.appspot.com).
+
 More info [here](https://docs.google.com/document/d/1OfiYyeHHSgJv-cZG0YS6RbhaUmHh0i1HklEtURd-yYs/edit?hl=en&authkey=CLzPyIMP).
 
 # Development
