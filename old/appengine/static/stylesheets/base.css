@@ -1,0 +1,213 @@
+body {
+  margin:  0;
+  padding: 0;
+
+  font: normal normal 14px/1.3em Arial,Verdana,sans-serif;
+
+  background: #fff;
+}
+
+body > div { 
+	direction: rtl;
+}
+
+
+/** HTML elements **/
+h1,h2,h3,h4,h5,h6 {
+  margin:  0;
+  padding: 0;
+}
+
+a {
+  color:#589DDE;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/** global classes **/
+.rep {
+  display:     block;
+  overflow:    hidden;
+  text-indent: -1000em;
+  direction:   ltr;
+
+  background-repeat: no-repeat;
+}
+
+.clr {
+  clear:    both;
+  display:  block;
+  height:   1px;
+  overflow: hidden;
+}
+
+
+/** layout **/
+#main {
+  margin:    0 auto;
+  width:     980px;
+  direction: rtl;
+}
+
+
+#header {
+  margin-bottom:10px;
+}
+
+#logo {
+  height:72px;
+  background-image:url('../media/gov-il-logo.jpg');
+  background-position:right top;
+  border-bottom:1px dotted #b5b5b5;
+  padding-bottom:3px;
+  margin-bottom:15px;
+}
+
+#header_title {
+  background-image:url('../media/bg_gov_header.png');
+  height:50px;
+}
+
+#header h2 {
+  margin-right:  4px;
+  padding-right: 60px;
+
+  line-height: 49px;
+  font-size:   24px;
+
+  color: #fff;
+
+  background-image:    url('../media/logo.png');
+  background-position: right;
+  background-repeat:   no-repeat;
+}
+
+#header_title a,
+#header_title a:visited { color:inherit; }
+
+#dev_state {
+  margin: 6px 15px;
+  float:  left;
+}
+
+nav {
+    padding: 5px 0;
+
+    height: 30px;
+    line-height: 0;
+
+    color: #fff;
+
+    background: #1B6AAF; /* old browsers */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1B6AAF), color-stop(100%,#0B3060)); /* webkit */
+    background: -moz-linear-gradient(top, #1B6AAF 0%, #0B3060 100%); /* firefox */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1B6AAF', endColorstr='#0B3060',GradientType=0 ); /* ie */
+
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius:  10px;
+    -moz-border-radius-bottomright:     10px;
+    -moz-border-radius-bottomleft:      10px;
+    border-bottom-right-radius:         10px;
+    border-bottom-left-radius:          10px;
+}
+
+nav ul li {
+    display: inline;
+
+    margin-left: 15px;
+
+	font-size:   1.25em;
+	font-weight: bold;
+}
+
+nav ul li a {  /* Applying CSS3 rounded corners: */
+	-webkit-border-radius: 10px;
+	-moz-border-radius:    10px;
+    border-radius:         10px;
+}
+
+nav ul li a,
+nav ul li a:visited,
+nav ul li a:hover {
+    padding: 2px 5px;
+    color: white;
+}
+
+nav ul li a:hover {
+	text-decoration:  none;
+	background-color: #153E7E;
+}
+
+
+
+#content { min-height: 460px; }
+
+
+.col.span50 { width: 485px; }
+.col.span70 { width: 686px; }
+.col.span20 { width: 283px; }
+
+.col h3 {
+  margin-bottom: 10px;
+  padding:       0 15px;
+
+  height: 30px;
+
+  line-height: 30px;
+  font-size:   18px;
+  font-weight: normal;
+
+  color: #062253;
+
+  background: #acd1f3; /* old browsers */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6eb3e9), color-stop(100%,#acd1f3)); /* webkit */
+  background: -moz-linear-gradient(top, #6eb3e9 0%, #acd1f3 100%); /* firefox */
+  filter:     progid:DXImageTransform.Microsoft.gradient( startColorstr='#6eb3e9', endColorstr='#acd1f3',GradientType=0 ); /* ie */
+
+  -webkit-border-top-left-radius:  4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft:      4px;
+  -moz-border-radius-topright:     4px;
+  border-top-left-radius:          4px;
+  border-top-right-radius:         4px;
+}
+
+
+#footer {
+  clear: both;
+
+  margin-top: 35px;
+  padding:    10px 15px;
+
+  background-color: #deecf9;
+
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-top-left-radius:  10px;
+  -moz-border-radius-topright:     10px;
+  -moz-border-radius-topleft:      10px;
+  border-top-right-radius:         10px;
+  border-top-left-radius:          10px;
+}
+
+#footer p {
+  margin:  5px 0;
+  padding: 0;
+
+  float:   right;
+}
+
+#footer p.right { width: 520px; }
+#footer p.left  { width: 400px; }
+
+#footer .left {
+  float:      left;
+  text-align: left;
+}
+
+.gii_section_header {
+    font-size: 20px;
+}

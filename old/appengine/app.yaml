@@ -1,0 +1,41 @@
+application: govinspector
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /apple-touch-icon\.png
+  mime_type: image/png
+  static_files: static/media/logo.png
+  upload: static/media/logo.png
+
+- url: /favicon\.ico
+  mime_type: image/png
+  static_files: static/media/favicon.ico
+  upload: static/media/favicon.ico
+
+- url: /(robots\.txt|humans\.txt|crossdomain\.xml)
+  static_files: static/\1
+  upload: static/(robots\.txt|humans\.txt|crossdomain\.xml)
+
+- url: /
+  script: main.py
+
+- url: /ft_bridge
+  script: ft_bridge.py
+
+- url: /ministries
+  script: ministries.py
+
+- url: /admin/add_issue
+  script: add_issue.py
+
+- url: /admin/set_secret
+  script: set_secret.py
+
+- url: /test
+  script: model_test.py
+

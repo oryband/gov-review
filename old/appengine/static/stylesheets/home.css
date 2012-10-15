@@ -1,0 +1,18 @@
+#welcome{
+    margin-bottom: 10px;
+    padding:       2px 15px;
+
+    background-color: #DEECF9;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius:    10px;
+    border-radius:         10px;
+}
+
+#welcome_title { font-size: 24px; }
+
+nav ul li:nth-child(1) a {  /* White cardboard box on selected page nav element. */
+    padding-bottom: 20px;
+    color: #153E7E;
+	background-color: #FFFFFF;
+}
