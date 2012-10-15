@@ -1,6 +1,5 @@
 # Word
-*.doc
-*.docx
+*.doc[x]
 
 # SASS
 /src/static/.sass-cache
