@@ -1,3 +1,5 @@
+# THIS IS THE OLD README OF THE OLD PROJECT. IT IS NOW OBSOLETE. ONLY HERE FOR DOCUMENTATION PURPOSES.
+
 # Israeli Government Inspector
 
 A website to share the Israeli state comptroller's reports in a simple, readable, and human way.
@@ -21,4 +23,3 @@ More info [here](https://docs.google.com/document/d/1OfiYyeHHSgJv-cZG0YS6RbhaUmH
 - [Discussion](http://groups.google.com/group/israel-gov-inspector-inspector)
 - [Wiki](http://govhackil.pbworks.com/w/page/40292907/Gov-Inspector)
 - [Issues](https://track.nsa.co.il/projects/govinspector)
-
