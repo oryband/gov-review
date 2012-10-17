@@ -1,5 +1,16 @@
 #!/usr/bin/env python
 # encoding: utf8
+"""The report is structured as follows:
+Volume
+    Section
+        Chapter
+            Sub-Chapter
+                Tags
+                Monitored Entity(ies)
+                Defect
+                    Defect Review(s)
+    Resolution
+"""
 
 from mongoengine import *
 
@@ -61,12 +72,14 @@ class Defect(Document):
     url = URLField()
     status = StringField(required=True,
                          choices=('fixed', 'in_progress', 'unfixed'))
-    time_updated = DateTimeField(required=True, default=datetime.now)
-    meta = {'indexes': ['time_updated', 'status'], 'ordering': ['+order']}
+    created_time = DateTimeField(required=True, default=datetime.now)
+    updated_time = DateTimeField(required=True, default=datetime.now)
+    meta = {'indexes': ['updated_time', 'status'], 'ordering': ['+order']}
 
 
 class Resolution(Document):
     tags = ListField(ReferenceField(Tags), required=True, default=list)
-    time_updated = DateTimeField(required=True, default=datetime.now)
+    created_time = DateTimeField(required=True, default=datetime.now)
+    updated_time = DateTimeField(required=True, default=datetime.now)
     description = StringField(required=True)
-    meta = {'indexes': ['time_updated'], 'ordering': ['-time_updated']}
+    meta = {'indexes': ['updated_time'], 'ordering': ['-updated_time']}
