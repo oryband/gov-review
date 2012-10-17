@@ -14,6 +14,9 @@ Also, it uses [Compass](http://compass-style.org/install) and
 Oh, and [Twitter Bootstrap](http://twitter.github.com/bootstrap/),
 with [AbduallahDiaa's RTL version](https://github.com/AbdullahDiaa/Bootstrap-RTL) of it.
 
+We also use several other utility libraries. Check the [requirements.txt](https://github.com/oryband/gov-review/blob/master/requirements.txt)
+file for more info.
+
 ## Set-up
 
 * `git clone`, `virtualenv`, [install Homebrew](http://mxcl.github.com/homebrew/) or use `apt-get`,
