@@ -54,7 +54,8 @@
       <div class="stamp {% if defect.status == "fixed" %}stamp-fixed{% elif defect.status == "in-progress" %}stamp-in-progress{% else %}stamp-unfixed{% endif %}"></div>
 
       <h2 class="chapter {% if defect.status == "fixed" %}chapter-fixed{% elif defect.status == "in-progress" %}chapter-in-progress{% else %}chapter-unfixed{% endif %}">
-        <a href="edit/{{ defect.sub_chapter.title }}/{{ defect.sub_chapter }}/{{ defect.defect }}">{{ defect.sub_chapter.title }} - ליקוי {{ defect.order }}</a>
+        <!--FIXME: Doesn't work.-->
+        <a href="defect/{{ defect.id }}">{{ defect.sub_chapter.title }} - ליקוי {{ defect.order }}</a>
       </h2>
       <div class="entities">
         <h3>גופים מבוקרים:</h3>

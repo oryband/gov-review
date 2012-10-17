@@ -24,12 +24,24 @@ app.config.from_object(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    connection = connect(DB_NAME)
-    defects = connection
-
+    connect(DB_NAME)
     defects = Defect.objects.order_by('-time_updated').limit(5)
-
+    # TODO: Need to inject id into each defect object,
+    # this should be the unique url for each defect.
+    #pprint(defects[0].id.__str__())
     return render_template('index.html', defects=defects)
+
+
+@app.route('/list', methods=['GET'])
+def list():
+    pass
+
+
+@app.route('/defect/<oid>', methods=['GET'])
+def defect(oid):
+    connect(DB_NAME)
+    defect = Defect.objects.get(oid)
+    return render_template('defect.html', defect=defect)
 
 
 #@app.route('/add')

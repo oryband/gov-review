@@ -5,6 +5,22 @@
 <link href="{{ url_for('static', filename='css/add.css') }}" rel="stylesheet">
 {% endblock %}
 
+{% block js %}
+{{ super() }}
+<script>
+  // Disable `enter` key from submitting form on <input> elements.
+  $(document).ready(function(){
+    $('input').keypress(function(e) {
+      var code = (e.keyCode ? e.keyCode : e.which);  // Cross-browser.
+      if (code === 13) {
+        e.preventDefault();
+        return false;
+      }
+    });
+  });
+</script>
+{% endblock %}
+
 {% block add_class %}active{% endblock %}
 
 {% block header %}
@@ -15,54 +31,61 @@
 
 {% block body %}
 <div class="container">
-  <form id="add" method="post" action="/new" autocomplete="on">
-    <div class="controls controls-row">
+  <form id="add" method="post" action="" autocomplete="on">
+    <fieldset class="controls controls-row">
       <legend>פרק - מס', שם</legend>
-      <input id="chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.chapter }}{% endif %}" autofocus>
-      <input id="chapter-name" class="span11" type="text" name="user" placeholder="שם הפרק" value="{% if defect %}{{ defect.chapter_name }}{% endif %}">
-    </div>
+      <input id="chapter-number" class="span1" type="number" name="chapter-number" placeholder="1" value="{% if defect %}{{ defect.chapter }}{% endif %}" autofocus />
+      <input id="chapter-name" class="span11" type="text" name="chapter-name" placeholder="שם הפרק" value="{% if defect %}{{ defect.chapter_name }}{% endif %}" />
+    </fieldset>
 
-    <div class="controls controls-row">
+    <fieldset class="controls controls-row">
       <legend>תת-פרק - מס', שם</legend>
-      <input id="sub-chapter-number" class="span1" type="number" name="user" placeholder="1" value="{% if defect %}{{ defect.sub_chapter }}{% endif %}">
-      <input id="sub-chapter-name" class="span11" type="text" name="user" placeholder="שם תת-פרק" value="{% if defect %}{{ defect.name }}{% endif %}">
-    </div>
+      <input id="sub-chapter-number" class="span1" type="number" name="sub-chapter-number" placeholder="1" value="{% if defect %}{{ defect.sub_chapter }}{% endif %}" />
+      <input id="sub-chapter-name" class="span11" type="text" name="sub-chapter-name"placeholder="שם תת-פרק" value="{% if defect %}{{ defect.name }}{% endif %}" />
+    </fieldset>
 
-    <div class="controls">
+    <fieldset class="controls">
+      <legend>קישור</legend>
+      <input id="tags" class="span12" type="url" name="url" placeholder="http://google.com" value="{% if defect %}{{ defect.url }}{% endif %}" />
+    </fieldset>
+
+    <fieldset class="controls">
       <legend>תגיות</legend>
-      <input id="tags" class="span12" type="text" name="user" placeholder="תגית 1, תגית 2, תגית 3" value="{% if defect %}{% for tag in defect.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span>
-    </div>
+      <input id="tags" class="span12" type="text" name="tags" placeholder="תגית 1, תגית 2, תגית 3" value="{% if defect %}{% for tag in defect.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}" /><span class="help-block">הפרד בפסיקים</span>
+    </fieldset>
 
-    <div class="controls">
+    <fieldset class="controls">
       <legend>גופים מבוקרים:</legend>
-      <input id="entities" class="span12" type="text" name="user" placeholder="גוף 1, גוף 2, גוף 3" value="{% if defect %}{% for entity in defect.entities %}{{ entity }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}"><span class="help-block">הפרד בפסיקים</span>
-    </div>
+      <input id="entities" class="span12" type="text" name="entities" placeholder="גוף 1, גוף 2, גוף 3" value="{% if defect %}{% for entity in defect.entities %}{{ entity }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}" /><span class="help-block">הפרד בפסיקים</span>
+    </fieldset>
 
-    <div class="controls">
+    <fieldset class="controls">
       <legend>לקות:</legend>
-      <textarea id="defect" class="span12" type="text" rows="8" name="user" placeholder="טקסט לקות...">{% if defect %}{{ defect.description }}{% endif %}</textarea>
-    </div>
+      <textarea id="description" class="span12" type="text" rows="8" name="description" placeholder="טקסט לקות...">{% if defect %}{{ defect.description }}{% endif %}</textarea>
+    </fieldset>
 
-    <div class="controls">
+    <fieldset class="controls">
       <legend>מעקב:</legend>
-      <textarea id="follow-up" class="span12" type="text" rows="8" name="user" placeholder="טקסט מעקב...">{% if defect %}{{ defect.follow_up }}{% endif %}</textarea>
-    </div>
+      <textarea id="follow-up" class="span12" type="text" rows="8" name="follow-up" placeholder="טקסט מעקב...">{% if defect %}{{ defect.follow_up }}{% endif %}</textarea>
+    </fieldset>
 
-    <div class="controls">
+    <fieldset class="controls">
       <legend>סטטוס:</legend>
-      <input type="radio" name="status" id="unfixed" value="unfixed"{% if not defect %} checked{% elif defect.status == "unfixed"%} checked{% endif %}>
+      <input type="radio" name="status" id="unfixed" value="unfixed"{% if not defect %} checked{% elif defect.status == "unfixed"%} checked{% endif %} />
       <label class="radio inline">לא-בטיפול</label>
 
-      <input type="radio" name="status" id="in-progress" value="in-progress"{% if defect %}{% if defect.status == "in-progress"%} checked{% endif %}{% endif %}>
+      <input type="radio" name="status" id="in-progress" value="in-progress"{% if defect %}{% if defect.status == "in-progress"%} checked{% endif %}{% endif %} />
       <label class="radio inline">בתהליך</label>
 
-      <input type="radio" name="status" id="fixed" value="fixed"{% if defect %}{% if defect.status == "fixed"%} checked{% endif %}{% endif %}>
+      <input type="radio" name="status" id="fixed" value="fixed"{% if defect %}{% if defect.status == "fixed"%} checked{% endif %}{% endif %} />
       <label class="radio inline">תוקן</label>
-    </div>
+    </fieldset>
 
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary btn-large pull-left">שמור</button>
-    </div>
+    <fieldset class="form-actions">
+      <button class="btn btn-primary btn-large pull-left" type="submit"
+        formaction='/{% if not defect %}new{% else %}update/{{ defect.chapter }}/{{ defect.sub_chapter }}/{{ defect.defect }}{% endif %}'>
+        שמור</button>
+    </fieldset>
   </form>
 </div>
 {% endblock %}
