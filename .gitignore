@@ -1,6 +1,9 @@
 # Word
 *.doc[x]
 
+# Photoshop
+# *.psd
+
 # SASS
 .sass-cache
 
