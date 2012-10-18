@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+<link href="{{ url_for('static', filename='css/defect.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="item span8">
+    <div class="row">
+      <div class="tags">
+        <ul>
+          {% for tag in defect.sub_chapter.tags|sort(attribute='name') %}
+          <a href="#"><li>{{ tag.name }}</li></a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="stamp {% if defect.status == "fixed" %}stamp-fixed{% elif defect.status == "in-progress" %}stamp-in-progress{% else %}stamp-unfixed{% endif %}"></div>
+    
+    <h2 class="chapter {% if defect.status == "fixed" %}chapter-fixed{% elif defect.status == "in-progress" %}chapter-in-progress{% else %}chapter-unfixed{% endif %}">
+      <a href="defect/{{ defect.id }}">{{ defect.sub_chapter.title }} - ליקוי {{ defect.order }}</a>
+    </h2>
+    
+    <div class="row">
+      
+      <div class="span2">
+      	<div class="budget">
+      	        	  <h3>עלות:</h3>
+      	  <p><span>לא פורט על ידי הוועדה</span><br>
+			יובהר, כי תכלית ההעברה היא ליצור רצף טיפולי ומדיניות חינוכית כאמור ואין בה כדי להגדיל
+את היקף המשאבים המיועד לתחום זה, מעבר למוצע במסגרת ההמלצות.</p>
+      	  </div>
+      	<div class="responsible">
+      	  <h3>גורם אחראי:</h3>
+      	  <p>
+      	          	    <span class="responsible-main">שר החינוך ובשנת 2012 בתיאום עם שר התמ"ת</span>
+      	    <span class="responsible-secondary">ועדה בראשות שר החינוך בשיתוף נציגים ממשרד התמ"ת והאוצר</span>
+      	    </p>
+      	</div>
+      	<div class="duedate">
+      	  <h3>מועד סיום:</h3>
+      	  <p>אוגוסט 2012</p>
+      	</div>
+      </div>
+      
+    <div class="span5">
+    	<div class="recommendation">
+    	  <h3>הסבר:</h3>
+    	  <p>העברת הסמכות והאחריות על תחום מעונות היום והמשפחתונים לגיל הרך ממשרד התמ"ת למשרד החינוך הוועדה סבורה כי על הממשלה לפעול להעברת האחריות והסמכות על תחום מעונות היום לשר
+החינוך, זאת, בין היתר, מתוך ההכרה בחשיבות החינוך בגילאים אלה והרצון לייצר מדיניות פדגוגית
+רציפה ושלמה החל משלבי התפתחותו המוקדמים של הילד.</p>
+    	</div>
+          
+    	<div class="purpose">
+    	  <h3>מה מדד התוצאה?</h3>
+    	  <p>לא הוגדרה על ידי הועדה</p>
+    	</div>
+        <div>
+          <h3>קישורים:</h3>
+                              	  <p><a href="http://hidavrut.gov.il/content/4253">ההמלצה בדו"ח טרכטנברג</a></p>
+                    </div>
+    </div>
+  </div>
+    
+    <div class="row tools">
+      <div class="span2">
+	<a href="" class="watch" rel="1">1&nbsp;עוקבים</a>
+      </div>  
+      <div class="span2">
+	<a href="" class="linkcount">0&nbsp;קישורים</a>
+      </div>  
+      <div class="span2">
+	<a href="" class="commentcount" rel="1">0 &nbsp;תגובות</a>
+      </div>  
+    </div>
+  </div>
+  
+  <div class="card-section">
+    <div class="timeline horizontal timeline-logic" data-max-numeric-date="748761" data-min-numeric-date="748364">
+    <ul>
+            
+            
+            
+            
+            
+            
+           
+    <li data-date-numeric="748761" style="width: 12px; left: 0px; ">
+        <div class="timeline-point today" data-date="2012/10/19" data-date-numeric="748761"><div>היום</div></div>
+        
+      </li><li data-date-numeric="748711" style="width: 93.94458438287154px; left: 12px; ">
+        <div class="timeline-point milestone completion" data-date="2012/08/31" data-date-numeric="748711">
+          <div>
+            <div class="point-meta">
+	      <img src="/profile/88988B8890819882" alt="טרכטנברג">
+	      <small>31/08/2012: מתוך הדו"ח</small>
+	      <span class="label implementation-status label-STUCK">תקוע</span>
+	    </div>
+            <h4>העברת הסמכות למשרד החינוך</h4>
+	    <p></p>
+	    
+          </div>
+	</div>    
+        <div class="timeline-line status-STUCK past unreported"></div>
+      </li><li data-date-numeric="748650" style="width: 116.65239294710327px; left: 105.94458438287154px; ">
+        <div class="timeline-point update gov-update gov-STUCK gov-status-bad" data-date="2012/07/01" data-status="STUCK" data-date-numeric="748650">
+          <div>
+            <div class="point-meta">
+	      <img src="/profile/848E8E998C84" alt="הממשלה">
+	      <small>01/07/2012: הממשלה</small>
+	      <span class="label label-STUCK implementation-status">תקוע</span> 
+	    </div>
+            <h4></h4>
+	    <p></p>
+	    <p>.</p>
+	  </div>    
+	</div>    
+        <div class="timeline-line status-STUCK past unreported"></div>
+      </li><li data-date-numeric="748588" style="width: 114.17128463476071px; left: 222.5969773299748px; ">
+        <div class="timeline-point update watch-update watch-NEW watch-status-bad" data-date="2012/05/01" data-status="NEW" data-date-numeric="748588">
+		  <div>
+		    <div class="point-meta">
+		      <img src="/profile/9685859A2091948981972F8985908420288E8B858F20858F2D8C899829" alt="צוות ספיבק/יונה (מכון ון-ליר)">
+		      <small>01/05/2012: צוות ספיבק/יונה (מכון ון-ליר)</small>
+		      <span class="label label-NEW implementation-status">טרם התחיל</span>
+		    </div>
+		    <h4></h4>
+		    <p></p>
+		    <p>פעילות הממשלה בתחום החינוך כללה רק את הצעד של מימון לימודים בגילאים 3-4.&nbsp; המומחים מתנגדים לצעד שנעשה דרך הכשרת הגנים הפרטיים, ומהיישום בפועל שאינו מתוקצב ואינו ריאלי ודה- פקטו תורם לקיצוץ בתקציבים המושקעים בפועל בחינוך</p>
+		  </div>    
+		</div>    
+        <div class="timeline-line status-NEW past"></div>
+      </li><li data-date-numeric="748464" style="width: 206.34256926952142px; left: 336.76826196473553px; ">
+        <div class="timeline-point milestone " data-date="2012/01/01" data-date-numeric="748464">
+          <div>
+            <div class="point-meta">
+	      <img src="/profile/88988B8890819882" alt="טרכטנברג">
+	      <small>01/01/2012: מתוך הדו"ח</small>
+	      <span class="label implementation-status label-NEW">טרם התחיל</span>
+	    </div>
+            <h4>פרסום ועדה משותפת בראשות שר החינוך ובהשתתפות משרד התמ"ת</h4>
+	    <p>הוועדה ממליצה להקים צוות יישום בראשות שר החינוך ובהשתתפות נציגי התמ"ת והאוצר לגיבוש
+תוכנית ליישום ההמלצה האמורה. הצוות יגיש עד ליום 1.1.2012 תוכנית מפורטת לממשלה ובה
+פירוט אבני הדרך ליישום העברת האחריות, תוך התייחסות, בין היתר, לתיאום הנדרש בין משרד
+התמ"ת למשרד החינוך בנוגע ליישום יתר המלצות הועדה בתחום הגיל הרך (בינוי, חוק הפיקוח,
+חיזוק מערך ההדרכה וכו') בתקופת הביניים.</p>
+	    
+          </div>
+	</div>    
+        <div class="timeline-line status-NEW past"></div>
+      </li><li data-date-numeric="748373" style="width: 158.21914357682618px; left: 543.1108312342569px; ">
+        <div class="timeline-point watch-update no-review" data-date="2011/10/03" data-status="" data-date-numeric="748373">
+		  <div>
+		    <div class="point-meta">
+		      <img src="/profile/849A808783859A2084918885839088898D" alt="התאחדות הסטודנטים">
+		      <small>03/10/2011: התאחדות הסטודנטים</small>
+		      <span class="label label- implementation-status"></span>
+		    </div>
+		    <h4></h4>
+		    <p>תומכים</p>
+		    <p></p>
+		  </div>    
+		</div>    
+        <div class="timeline-line status-NEW past"></div>
+      </li><li data-date-numeric="748365" style="width: 46.151133501259494px; left: 701.329974811083px; ">
+        <div class="timeline-point milestone start" data-date="2011/09/26" data-date-numeric="748365">
+          <div>
+            <div class="point-meta">
+	      <img src="/profile/88988B8890819882" alt="טרכטנברג">
+	      <small>26/09/2011: מתוך הדו"ח</small>
+	      <span class="label implementation-status label-NEW">טרם התחיל</span>
+	    </div>
+            <h4>פרסום הדו"ח</h4>
+	    <p></p>
+	    
+          </div>
+	</div>    
+        <div class="timeline-line status-NEW past"></div>
+      </li></ul>
+    </div>
+  </div>
+  <div class="card-section">  
+    <div class="row">
+      <div class="update-feed">
+      	<ul>
+      	  
+      	        	  
+      	        	  
+      	        	  
+      	  <li data-date="2012/07/01">
+      	  	
+      	    <div class="timeline-point gov-update STUCK" data-date="2012/07/01" data-status="STUCK">
+      	    	<div class="point-meta">
+	            	<img src="/profile/848E8E998C84" alt="הממשלה">
+					<small>01/07/2012: הממשלה</small>
+              		<span class="label label-STUCK implementation-status"></span>
+                </div>
+                <div class="update-details">
+			    	<h4></h4>
+    	          	<p></p>
+        	      	<p>.</p>
+              	<h4>סימוכין:</h4>
+                אין<ul>
+                        </ul>
+    	      	</div>
+      	    </div>    
+      	  </li><li data-date="2012/05/01">
+      	    <div class="timeline-point watch-update NEW" data-date="2012/05/01" data-status="NEW">
+      	    	<div class="point-meta">
+	            	<img src="/profile/9685859A2091948981972F8985908420288E8B858F20858F2D8C899829" alt="צוות ספיבק/יונה (מכון ון-ליר)">
+					<small>01/05/2012: צוות ספיבק/יונה (מכון ון-ליר)</small>
+              		<span class="label label-NEW implementation-status"></span>
+                </div>
+                <div class="update-details">
+			    	<h4></h4>
+    	          	<p></p>
+        	      	<p>פעילות הממשלה בתחום החינוך כללה רק את הצעד של מימון לימודים בגילאים 3-4.&nbsp; המומחים מתנגדים לצעד שנעשה דרך הכשרת הגנים הפרטיים, ומהיישום בפועל שאינו מתוקצב ואינו ריאלי ודה- פקטו תורם לקיצוץ בתקציבים המושקעים בפועל בחינוך</p>
+                    <h4>סימוכין:</h4>
+                    <ul class="update-links">
+                      אין</ul>
+    	      	</div>
+      	    </div>    
+      	  </li><li data-date="2011/10/03">
+      	    <div class="timeline-point watch-update " data-date="2011/10/03" data-status="">
+      	    	<div class="point-meta">
+	            	<img src="/profile/849A808783859A2084918885839088898D" alt="התאחדות הסטודנטים">
+					<small>03/10/2011: התאחדות הסטודנטים</small>
+              		<span class="label label- implementation-status"></span>
+                </div>
+                <div class="update-details">
+			    	<h4></h4>
+    	          	<p>תומכים</p>
+        	      	<p></p>
+                    <h4>סימוכין:</h4>
+                    <ul class="update-links">
+                      אין</ul>
+    	      	</div>
+      	    </div>    
+      	  </li></ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card-section">
+    <div class="row">
+      <div class="fb">
+      <fb:like href="http://watch.gov.il/#!z=b:83852287208592839A2088988B8890819882_s:1" send="true" width="700" show_faces="true" action="recommend" font="tahoma" fb-xfbml-state="rendered" class="fb_edge_widget_with_comment fb_iframe_widget"><span style="height: 28px; width: 700px; "><iframe id="f24deaf1a4" name="f1ede8d7c8" scrolling="no" style="border: none; overflow: hidden; height: 28px; width: 700px; " title="Like this content on Facebook." class="fb_rtl" src="http://www.facebook.com/plugins/like.php?action=recommend&amp;api_key=161102067336024&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D11%23cb%3Df2b15bbb3%26origin%3Dhttp%253A%252F%252Fwatch.gov.il%252Ff2a780b314%26domain%3Dwatch.gov.il%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;font=tahoma&amp;href=http%3A%2F%2Fwatch.gov.il%2F%23!z%3Db%3A83852287208592839A2088988B8890819882_s%3A1&amp;layout=standard&amp;locale=he_IL&amp;node_type=link&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=700"></iframe></span></fb:like><fb:comments href="http://watch.gov.il/#!z=b:83852287208592839A2088988B8890819882_s:1" num_posts="2" width="700" fb-xfbml-state="rendered" class="fb_iframe_widget"><span style="height: 160px; width: 700px; "><iframe id="f273fe562" name="f10e5c5644" scrolling="no" style="border: none; overflow: hidden; height: 160px; width: 700px; " class="fb_rtl" src="https://www.facebook.com/plugins/comments.php?api_key=161102067336024&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D11%23cb%3Df7be04b04%26origin%3Dhttp%253A%252F%252Fwatch.gov.il%252Ff2a780b314%26domain%3Dwatch.gov.il%26relation%3Dparent.parent&amp;href=http%3A%2F%2Fwatch.gov.il%2F%23!z%3Db%3A83852287208592839A2088988B8890819882_s%3A1&amp;locale=he_IL&amp;numposts=2&amp;sdk=joey&amp;width=700"></iframe></span></fb:comments></div>
+    </div>
+  </div>
+  
+</div>
+    </div>
+</div>
+{% endblock %}

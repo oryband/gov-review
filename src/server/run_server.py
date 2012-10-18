@@ -26,9 +26,6 @@ app.config.from_object(__name__)
 def index():
     connect(DB_NAME)
     defects = Defect.objects.order_by('-time_updated').limit(5)
-    # TODO: Need to inject id into each defect object,
-    # this should be the unique url for each defect.
-    #pprint(defects[0].id.__str__())
     return render_template('index.html', defects=defects)
 
 
@@ -40,7 +37,7 @@ def list():
 @app.route('/defect/<oid>', methods=['GET'])
 def defect(oid):
     connect(DB_NAME)
-    defect = Defect.objects.get(oid)
+    defect = Defect.objects.get(id=oid)
     return render_template('defect.html', defect=defect)
 
 

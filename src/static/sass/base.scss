@@ -37,3 +37,127 @@ h4 {
   background-color: rgba(0, 0, 0, 0.3);
   border-style: none;
 }
+
+.item {
+  margin-bottom: 13px;
+  padding-left: 104px;
+  /*width: image-width("card.png");*/
+  width: 298px;
+  height: image-height("card.png");
+  h2 {
+    clear: both;
+    margin: 1.3em 10px 0.5em;
+    line-height: 1em;
+    font-weight: 400;
+    font-size: 1.5em;
+    background-image: image-url("hr.png");
+    &:hover {
+      background-image: image-url("hr.png");
+    }
+    a {
+      display: block;
+      padding: 15px;
+      color: #fffcd9;
+    }
+  }
+  h3 {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #847d6b;
+    padding: 0 5px;
+    line-height: 0.5em;
+  }
+  div {
+    margin: 0 10px;
+  }
+  .stamp {
+    @include float-left;
+    margin: -3px 0 -11px -18px;
+    right: 240px;
+    height: 40px;
+    width: 80px;
+    overflow: hidden;
+    text-indent: -200%;
+    background-image: image-url("stamp-accepted.png");
+  }
+  .stamp-fixed {
+    background-image: image-url("stamp-fixed.png");
+  }
+  .stamp-in-progress {
+    background-image: image-url("stamp-in-progress.png");
+  }
+  .stamp-unfixed {
+    background-image: image-url("stamp-unfixed.png");
+  }
+  .chapter-fixed {
+    background-color: #6ba688;
+    background-image: none;
+  }
+  .chapter-in-progress {
+    @include background(#6ba688 image-url("chapter-in-progress.png") 50% 50%);
+  }
+  .chapter-unfixed {
+    background-color: #f0776d;
+    background-image: none;
+  }
+  .entities {
+    color: #847d6b;
+    font-weight: normal;
+    p {
+      padding: 5px;
+      font-size: 1.2em;
+      span {
+        color: #847D6B;
+        &:hover {
+          color: #3c3c3c;
+        }
+      }
+    }
+  }
+  p {
+    padding: 5px;
+    font-size: 1.2em;
+  }
+  .description {
+    @include background(image-url("hr.png") repeat-x center -2px);
+    padding-top: 0.5em;
+    height: image-height("card.png") - 293;
+    p {
+      overflow: hidden;
+      height: inherit;
+    }
+  }
+}
+
+.tags {
+  ul {
+    margin: 0 0 10px 0;
+    list-style: disc;
+    a {
+      @include float-right;
+      margin: 0 0 3px 5px;
+      padding-right: 13px;
+      height: image-height("taghead.png") / 2;
+      line-height: image-height("taghead.png") / 2;
+      font-size: 0.7em;
+      overflow: hidden;
+      list-style: none outside none;
+      @include background(image-url("taghead.png") no-repeat right top);
+      li {
+        display: block;
+        padding: 0px 5px 1px;
+        font-weight: 700px;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+        color: #fffcd9;
+        background-color: #e4daac;
+        @include border-radius(3px 0 0 3px);
+      }
+      &:hover {
+        background-position: right bottom;
+        li {
+          background-color: #c4bb91;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@import "scssbase";
+
+
+.item {
+  @include background(image-url("card-tile.jpg") right top repeat);
+  width: 598px;
+}

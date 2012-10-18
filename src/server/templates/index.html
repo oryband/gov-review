@@ -57,6 +57,7 @@
         <!--FIXME: Doesn't work.-->
         <a href="defect/{{ defect.id }}">{{ defect.sub_chapter.title }} - ליקוי {{ defect.order }}</a>
       </h2>
+
       <div class="entities">
         <h3>גופים מבוקרים:</h3>
         <p>{% for monitored_entity in defect.sub_chapter.monitored_entities|sort(attribute='name') %}<a href="#"><span>{{ monitored_entity.name }}</span></a>{% if not loop.last %}, {% else %}.{% endif %}{% endfor %}</p>
