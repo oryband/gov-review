@@ -1,3 +1,8 @@
+# DEPRECATED
+
+Please see the continuation of this project in
+[Open-Audit](https://github.com/oryband/open-audit).
+
 # Israeli Government Review
 
 * [Discussion](https://groups.google.com/d/forum/gov-review).
